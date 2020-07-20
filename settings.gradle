@@ -1,0 +1,17 @@
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == 'com.android')
+                useModule "com.android.tools.build:gradle:$requested.version"
+        }
+    }
+
+    repositories {
+        gradlePluginPortal()
+        maven { url 'https://maven.google.com' }
+    }
+}
+
+include ':example'
+include ':recycler'
+include ':time'

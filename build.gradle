@@ -1,0 +1,121 @@
+//  Copyright 2020 Christian Schmitz
+//  SPDX-License-Identifier: Apache-2.0
+
+plugins {
+    id 'com.android.library' version '3.6.3' apply false
+    id 'org.jetbrains.kotlin.android' version '1.3.72' apply false
+    id 'org.jetbrains.dokka' version '0.10.1'
+    id 'com.vanniktech.android.junit.jacoco' version '0.16.0'
+    id 'xyz.tynn.android.maven' version '0.1.0' apply false
+    id 'com.github.ben-manes.versions' version '0.28.0'
+    id 'xyz.tynn.idea.fix' version '0.1.2'
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+
+    plugins.withType(org.jetbrains.dokka.gradle.DokkaPlugin) {
+        if (project != rootProject)
+            rootProject.dokka.subProjects += project.name
+
+        tasks.withType(org.jetbrains.dokka.gradle.DokkaTask) {
+            configuration {
+                externalDocumentationLink {
+                    url = new URL('https://developer.android.com/reference/kotlin/')
+                    packageListUrl = new URL(url, '../androidx/package-list')
+                }
+                perPackageOption {
+                    prefix = 'xyz.tynn.hoppa.time'
+                    suppress = true
+                }
+            }
+        }
+    }
+}
+
+subprojects {
+    group = 'xyz.tynn.hoppa'
+
+    plugins.withId('com.android.library') {
+        project.apply plugin: 'xyz.tynn.android.kdoc'
+        project.apply plugin: 'xyz.tynn.android.sources'
+        project.apply plugin: 'xyz.tynn.android.maven'
+    }
+
+    plugins.withType(com.android.build.gradle.BasePlugin) {
+        android {
+            buildToolsVersion '29.0.3'
+            compileSdkVersion 29
+
+            defaultConfig {
+                minSdkVersion 15
+                targetSdkVersion 29
+                testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            }
+
+            compileOptions {
+                sourceCompatibility '1.8'
+                targetCompatibility '1.8'
+            }
+        }
+
+        dependencies {
+            testImplementation 'io.mockk:mockk:1.10.0'
+        }
+    }
+
+    plugins.withId('org.jetbrains.kotlin.android') {
+        project.apply plugin: 'org.jetbrains.kotlin.android.extensions'
+
+        android {
+            kotlinOptions {
+                jvmTarget = '1.8'
+            }
+        }
+
+        kotlin {
+            androidExtensions {
+                experimental = true
+            }
+        }
+
+        dependencies {
+            implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+            testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+        }
+    }
+
+    plugins.withType(MavenPublishPlugin) {
+        project.apply from: "$rootDir/publish.gradle"
+    }
+}
+
+junitJacoco {
+    jacocoVersion = '0.8.5'
+    includeNoLocationClasses = true
+}
+
+dependencyUpdates {
+    def isNonStable = { String version ->
+        ['alpha', 'beta', 'dev', 'rc', 'cr', 'm', 'preview', 'b', 'ea', 'eap'].any {
+            version ==~ /(?i).*[.-]${it}[.\d-+]*.*/
+        }
+    }
+    rejectVersionIf {
+        isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)
+    }
+    gradleReleaseChannel = 'current'
+}
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/docs"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

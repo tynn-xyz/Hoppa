@@ -1,0 +1,28 @@
+publishing {
+    repositories {
+        maven {
+            name = "bintray"
+            url = 'https://api.bintray.com/maven/tynn-xyz/maven/Hoppa/;publish=1'
+            credentials {
+                username System.env.BINTRAY_USER
+                password System.env.BINTRAY_KEY
+            }
+        }
+    }
+    publications.all {
+        pom {
+            developers {
+                developer {
+                    id = 'tynn'
+                    name = 'Christian Schmitz'
+                }
+            }
+            licenses {
+                license {
+                    name = 'The Apache License, Version 2.0'
+                    url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_list"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/fragment_list"
+        android:name="xyz.tynn.hoppa.example.recycler.ListFragment"/>
+    <dialog
+        android:id="@+id/dialog_date"
+        android:name="xyz.tynn.hoppa.example.recycler.LocalDateDialog"/>
+</navigation>

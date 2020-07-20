@@ -1,0 +1,53 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    defaultConfig {
+        versionCode 1
+        versionName "0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-example.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    productFlavors {
+        flavorDimensions 'time'
+
+        java {
+            dimension 'time'
+            minSdkVersion 26
+        }
+
+        threeten {
+            dimension 'time'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE*'
+    }
+
+    testBuildType 'release'
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+
+    implementation project(':recycler')
+    implementation project(':time')
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+}

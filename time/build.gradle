@@ -1,0 +1,31 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    defaultConfig {
+        versionCode 1
+    }
+
+    productFlavors {
+        flavorDimensions 'time'
+
+        java {
+            dimension 'time'
+            minSdkVersion 26
+        }
+
+        threeten {
+            dimension 'time'
+            consumerProguardFiles 'proguard-startup.pro'
+        }
+    }
+}
+
+dependencies {
+    threetenApi 'com.jakewharton.threetenabp:threetenabp:1.2.4'
+    threetenImplementation 'androidx.startup:startup-runtime:1.0.0-alpha01'
+
+    testThreetenImplementation 'org.threeten:threetenbp:1.4.4'
+}
