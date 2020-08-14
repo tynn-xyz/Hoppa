@@ -45,43 +45,6 @@ Some simple delegates to `ViewHolder.itemView` for accessing tags or setting
     holder.setOnLongClickListener { true }
 
 
-## Time
-
-Type aliases for common types of _java.time_ and the _ThreeTen BP_. This
-facilitates the simplification and compatibility for common implementations.
-The aliases for _java.time_ are deprecated to simplify migration to the
-originals.
-
-### ThreeTen
-
-The module also integrates _ThreeTen ABP_ with the early state
-[_App Startup_](https://developer.android.com/topic/libraries/app-startup)
-_Library_.
-
-### Parcelize
-
-Custom [Parcelize] serializers for the basic time types:
-
- * `Duration`
- * `Instant`
- * `LocalDate`
- * `LocalDateTime`
- * `LocalTime`
- * `OffsetDateTime`
- * `OffsetTime`
- * `Period`
- * `ZonedDateTime`
-
-### Usage
-
-    @Parcelize
-    @TypeParceler<LocalTime, LocalTimeParceler>
-    data class Entity(
-        val date: @WriteWith<LocalDateParceler> LocalDate,
-        val time: LocalTime
-    ) : Parcelable
-
-
 ## License
 
     Copyright (C) 2020 Christian Schmitz

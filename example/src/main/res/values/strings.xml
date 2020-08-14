@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Hoppa Demo</string>
-    <string name="title_date">LocalDate</string>
+    <string name="title_message">Message</string>
 </resources>

@@ -1,3 +1,6 @@
+//  Copyright 2020 Christian Schmitz
+//  SPDX-License-Identifier: Apache-2.0
+
 package xyz.tynn.hoppa.example
 
 import androidx.test.espresso.Espresso.onView
@@ -8,29 +11,24 @@ import androidx.test.rule.ActivityTestRule
 import org.hamcrest.CoreMatchers.not
 import org.junit.Rule
 import org.junit.Test
-import xyz.tynn.hoppa.time.LocalDate
-import xyz.tynn.hoppa.time.format.DateTimeFormatter
-
 
 class MainActivityTest {
-
-    val yesterday = LocalDate.now().minusDays(1)
 
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun yesterdaySoFarAway() {
-        onView(withText(yesterday.format(DateTimeFormatter.ISO_LOCAL_DATE)))
+    fun clickStringRows() {
+        onView(withText("String Row 1"))
             .perform(click())
-        onView(withText(R.string.title_date))
+        onView(withText(R.string.title_message))
             .inRoot(isDialog())
-        onView(withText(yesterday.format(DateTimeFormatter.ISO_LOCAL_DATE)))
+        onView(withText("String Row 5"))
             .inRoot(isDialog())
         onView(withText(android.R.string.ok))
             .inRoot(isDialog())
             .perform(click())
-        onView(withText(yesterday.format(DateTimeFormatter.ISO_LOCAL_DATE)))
+        onView(withText("String Row 11"))
             .inRoot(not(isDialog()))
     }
 }

@@ -14,4 +14,3 @@ pluginManagement {
 
 include ':example'
 include ':recycler'
-include ':time'
