@@ -17,6 +17,13 @@ internal class ViewHolderTest {
     val viewHolder = object : ViewHolder(view) {}
 
     @Test
+    fun `context should delegate to itemView context`() {
+        viewHolder.context
+
+        verifyAll { view.context }
+    }
+
+    @Test
     fun `set should delegate to itemView setTag`() {
         val key = 1234
         val value = "FooBar"
