@@ -1,14 +1,4 @@
 publishing {
-    repositories {
-        maven {
-            name = "bintray"
-            url = 'https://api.bintray.com/maven/tynn-xyz/maven/Hoppa/;publish=1'
-            credentials {
-                username System.env.BINTRAY_USER
-                password System.env.BINTRAY_KEY
-            }
-        }
-    }
     publications.all {
         pom {
             developers {

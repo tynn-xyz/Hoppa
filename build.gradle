@@ -2,12 +2,12 @@
 //  SPDX-License-Identifier: Apache-2.0
 
 plugins {
-    id 'com.android.library' version '4.0.1' apply false
-    id 'org.jetbrains.kotlin.android' version '1.3.72' apply false
+    id 'com.android.library' version '4.1.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.4.30' apply false
     id 'org.jetbrains.dokka' version '0.10.1'
     id 'com.vanniktech.android.junit.jacoco' version '0.16.0'
     id 'xyz.tynn.android.maven' version '0.1.0' apply false
-    id 'com.github.ben-manes.versions' version '0.29.0'
+    id 'com.github.ben-manes.versions' version '0.36.0'
     id 'xyz.tynn.idea.fix' version '0.1.2'
 }
 
@@ -64,7 +64,7 @@ subprojects {
         }
 
         dependencies {
-            testImplementation 'io.mockk:mockk:1.10.0'
+            testImplementation 'io.mockk:mockk:1.10.5'
         }
     }
 

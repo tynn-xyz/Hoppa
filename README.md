@@ -1,6 +1,6 @@
 # Hoppa
 [![Build][travis-shield]][travis]
-[![Download][bintray-shield]][bintray]
+[![Download][jitpack-shield]][jitpack]
 [![Coverage][codecov-shield]][codecov]
 
 _Hoppa_ is a micro utility extension to the _Kotlin Android Extensions_.
@@ -8,6 +8,8 @@ It reduces code duplication for simple but useful implementations around the
 `RecyclerView` and `Parcelable`.
 
 ## Recycler
+
+    implementation "xyz.tynn.hoppa:recycler:$hoppaVersion"
 
 ### `SyntheticViewHolder` and `SyntheticLayoutHolder`
 
@@ -39,6 +41,7 @@ A simple implementation of `DiffUtil.ItemCallback` defaulting to the equality
 Some simple delegates to `ViewHolder.itemView` for accessing tags or setting
 (long) click listeners.
 
+    holder.context
     holder[tagId] = tagValue
     holder.getTag(tagId)
     holder.setOnClickListener { doSomething() }
@@ -62,9 +65,9 @@ Some simple delegates to `ViewHolder.itemView` for accessing tags or setting
     limitations under the License.
 
 
-  [bintray]: https://bintray.com/tynn-xyz/maven/Hoppa/_latestVersion
-  [bintray-shield]: https://api.bintray.com/packages/tynn-xyz/maven/Hoppa/images/download.svg
   [codecov]: https://codecov.io/gh/tynn-xyz/Hoppa
   [codecov-shield]: https://codecov.io/gh/tynn-xyz/Hoppa/badge.svg
+  [jitpack]: https://jitpack.io/#xyz.tynn/hoppa
+  [jitpack-shield]: https://jitpack.io/v/xyz.tynn/hoppa.svg
   [travis]: https://travis-ci.com/tynn-xyz/Hoppa
   [travis-shield]: https://travis-ci.com/tynn-xyz/Hoppa.svg

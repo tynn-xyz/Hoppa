@@ -12,5 +12,6 @@ pluginManagement {
     }
 }
 
+include ':bom'
 include ':example'
 include ':recycler'
