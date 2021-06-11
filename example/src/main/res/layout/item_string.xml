@@ -10,4 +10,4 @@
     android:paddingHorizontal="16dp"
     android:paddingVertical="8dp"
     tools:ignore="Overdraw"
-    tools:text="@string/app_name"/>
+    tools:text="@string/app_name" />

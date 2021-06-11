@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_list"
+        android:icon="@drawable/ic_list"
+        android:title="@string/label_list" />
+
+    <item
+        android:id="@+id/fragment_edit"
+        android:icon="@drawable/ic_edit"
+        android:title="@string/label_edit" />
+</menu>

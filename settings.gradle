@@ -14,5 +14,6 @@ pluginManagement {
 
 include ':bom'
 include ':example'
+include ':keyboard'
 include ':recycler'
 include ':synthetic'

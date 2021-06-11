@@ -1,5 +1,4 @@
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
@@ -7,9 +6,16 @@
     tools:ignore="UnusedNavigation">
 
     <fragment
+        android:id="@+id/fragment_edit"
+        android:name="xyz.tynn.hoppa.example.keyboard.EditFragment"
+        tools:layout="@layout/fragment_edit" />
+
+    <fragment
         android:id="@+id/fragment_list"
-        android:name="xyz.tynn.hoppa.example.recycler.ListFragment"/>
+        android:name="xyz.tynn.hoppa.example.synthetic.ListFragment"
+        tools:layout="@layout/fragment_list" />
+
     <dialog
         android:id="@+id/dialog_message"
-        android:name="xyz.tynn.hoppa.example.recycler.MessageDialog"/>
+        android:name="xyz.tynn.hoppa.example.synthetic.MessageDialog" />
 </navigation>

@@ -1,7 +1,7 @@
 //  Copyright 2020 Christian Schmitz
 //  SPDX-License-Identifier: Apache-2.0
 
-package xyz.tynn.hoppa.example.recycler
+package xyz.tynn.hoppa.example.synthetic
 
 import android.os.Bundle
 import android.view.ViewGroup

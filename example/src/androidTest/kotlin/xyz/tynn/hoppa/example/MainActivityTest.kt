@@ -1,4 +1,4 @@
-//  Copyright 2020 Christian Schmitz
+//  Copyright 2020-2021 Christian Schmitz
 //  SPDX-License-Identifier: Apache-2.0
 
 package xyz.tynn.hoppa.example

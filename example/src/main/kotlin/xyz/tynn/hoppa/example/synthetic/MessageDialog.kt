@@ -1,7 +1,7 @@
 //  Copyright 2020 Christian Schmitz
 //  SPDX-License-Identifier: Apache-2.0
 
-package xyz.tynn.hoppa.example.recycler
+package xyz.tynn.hoppa.example.synthetic
 
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog.Builder as AlertDialogBuilder
 
 class MessageDialog : DialogFragment() {
 
-    private val message
+    private val message: String?
         get() = arguments?.getString(null)
 
     override fun onCreateDialog(

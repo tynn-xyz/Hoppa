@@ -1,26 +1,30 @@
 # Hoppa
-[![Build][travis-shield]][travis]
-[![Download][jitpack-shield]][jitpack]
-[![Coverage][codecov-shield]][codecov]
+[![Build][build-shield]][build]
+[![Download][download-shield]][download]
 
-_Hoppa_ is a micro utility extension to the _Kotlin Android Extensions_.
-It reduces code duplication for simple but useful implementations around the
-`RecyclerView` and `Parcelable`.
+_Hoppa_ is a micro utility extension for _AndroidX_ and the _Kotlin Android Extensions_.
+It reduces code duplication for simple use-cases around `RecyclerView` and the keyboard.
+
+## Installation
+
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        implementation platform("xyz.tynn.hoppa:bom:$hoppaVersion")
+    }
+
+## Keyboard
+
+    implementation 'xyz.tynn.hoppa:keyboard'
+
+### `KeyboardVisibilityKt`
+
 
 ## Recycler
 
-    implementation "xyz.tynn.hoppa:recycler:$hoppaVersion"
-
-### `SyntheticViewHolder` and `SyntheticLayoutHolder`
-
-A simple `RecyclerView.ViewHolder` implementing the `LayoutContainer` interface
-to support synthetic layout properties.
-
-    import kotlinx.android.synthetic.main.text_layout.text_view
-    holder.text_view.text = "value"
-
-`SyntheticLayoutHolder` extends `SyntheticViewHolder` by adding a reference to
-the layout resource used to inflate the layout.
+    implementation 'xyz.tynn.hoppa:recycler'
 
 ### `DiffUtilItemCallback`
 
@@ -48,9 +52,25 @@ Some simple delegates to `ViewHolder.itemView` for accessing tags or setting
     holder.setOnLongClickListener { true }
 
 
+## Synthetic
+
+    implementation 'xyz.tynn.hoppa:synthetic'
+
+### `SyntheticViewHolder` and `SyntheticLayoutHolder`
+
+A simple `RecyclerView.ViewHolder` implementing the `LayoutContainer` interface
+to support synthetic layout properties.
+
+    import kotlinx.android.synthetic.main.text_layout.text_view
+    holder.text_view.text = "value"
+
+`SyntheticLayoutHolder` extends `SyntheticViewHolder` by adding a reference to
+the layout resource used to inflate the layout.
+
+
 ## License
 
-    Copyright (C) 2020 Christian Schmitz
+    Copyright (C) 2020-2021 Christian Schmitz
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -65,9 +85,7 @@ Some simple delegates to `ViewHolder.itemView` for accessing tags or setting
     limitations under the License.
 
 
-  [codecov]: https://codecov.io/gh/tynn-xyz/Hoppa
-  [codecov-shield]: https://codecov.io/gh/tynn-xyz/Hoppa/badge.svg
-  [jitpack]: https://jitpack.io/#xyz.tynn/hoppa
-  [jitpack-shield]: https://jitpack.io/v/xyz.tynn/hoppa.svg
-  [travis]: https://travis-ci.com/tynn-xyz/Hoppa
-  [travis-shield]: https://travis-ci.com/tynn-xyz/Hoppa.svg
+  [build]: https://github.com/tynn-xyz/Hoppa/actions
+  [build-shield]: https://img.shields.io/github/workflow/status/tynn-xyz/Hoppa/Build
+  [download]: https://jitpack.io/#xyz.tynn/hoppa
+  [download-shield]: https://jitpack.io/v/xyz.tynn/hoppa.svg
