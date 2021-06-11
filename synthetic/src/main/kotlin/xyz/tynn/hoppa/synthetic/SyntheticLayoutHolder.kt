@@ -1,7 +1,7 @@
 //  Copyright 2020 Christian Schmitz
 //  SPDX-License-Identifier: Apache-2.0
 
-package xyz.tynn.hoppa.recycler
+package xyz.tynn.hoppa.synthetic
 
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -16,10 +16,10 @@ import androidx.annotation.LayoutRes
  */
 open class SyntheticLayoutHolder(
     @LayoutRes val layoutRes: Int,
-    parent: ViewGroup
+    parent: ViewGroup,
 ) : SyntheticViewHolder(
     layoutRes,
-    parent
+    parent,
 )
 
 /**
@@ -33,8 +33,8 @@ open class SyntheticLayoutHolder(
 inline fun SyntheticLayoutHolder(
     @LayoutRes layoutRes: Int,
     parent: ViewGroup,
-    crossinline init: SyntheticLayoutHolder.() -> Unit
+    crossinline init: SyntheticLayoutHolder.() -> Unit,
 ) = SyntheticLayoutHolder(
     layoutRes,
-    parent
+    parent,
 ).apply(init)

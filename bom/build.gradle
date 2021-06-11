@@ -6,6 +6,7 @@ plugins {
 dependencies {
     constraints {
         api project(":recycler")
+        api project(":synthetic")
     }
 }
 

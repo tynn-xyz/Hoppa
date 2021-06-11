@@ -3,12 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
-android {
-    defaultConfig {
-        versionCode 1
-    }
-}
-
 dependencies {
-    api 'androidx.recyclerview:recyclerview:1.1.0'
+    api 'androidx.recyclerview:recyclerview:1.2.1'
 }

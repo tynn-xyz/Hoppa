@@ -1,7 +1,7 @@
 //  Copyright 2020 Christian Schmitz
 //  SPDX-License-Identifier: Apache-2.0
 
-package xyz.tynn.hoppa.recycler
+package xyz.tynn.hoppa.synthetic
 
 import android.view.LayoutInflater.from
 import android.view.View
@@ -27,9 +27,9 @@ import kotlinx.android.extensions.LayoutContainer
  */
 @ContainerOptions(SPARSE_ARRAY)
 open class SyntheticViewHolder(
-    override val containerView: View
+    override val containerView: View,
 ) : ViewHolder(
-    containerView
+    containerView,
 ), LayoutContainer {
 
     /**
@@ -40,12 +40,12 @@ open class SyntheticViewHolder(
      */
     constructor(
         @LayoutRes layoutRes: Int,
-        parent: ViewGroup
+        parent: ViewGroup,
     ) : this(
         from(parent.context).inflate(
             layoutRes,
             parent,
-            false
+            false,
         )
     )
 }
@@ -59,9 +59,9 @@ open class SyntheticViewHolder(
 @Suppress("FunctionName")
 inline fun SyntheticViewHolder(
     containerView: View,
-    crossinline init: SyntheticViewHolder.() -> Unit
+    crossinline init: SyntheticViewHolder.() -> Unit,
 ) = SyntheticViewHolder(
-    containerView
+    containerView,
 ).apply(init)
 
 /**
@@ -75,8 +75,8 @@ inline fun SyntheticViewHolder(
 inline fun SyntheticViewHolder(
     @LayoutRes layoutRes: Int,
     parent: ViewGroup,
-    crossinline init: SyntheticViewHolder.() -> Unit
+    crossinline init: SyntheticViewHolder.() -> Unit,
 ) = SyntheticViewHolder(
     layoutRes,
-    parent
+    parent,
 ).apply(init)

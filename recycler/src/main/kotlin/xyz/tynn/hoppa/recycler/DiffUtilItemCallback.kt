@@ -16,22 +16,22 @@ inline fun <T> DiffUtilItemCallback(
     crossinline areContentsTheSame: (oldItem: T, newItem: T) -> Boolean =
         { oldItem, newItem -> oldItem == newItem },
     crossinline areItemsTheSame: (oldItem: T, newItem: T) -> Boolean =
-        { oldItem, newItem -> oldItem == newItem }
+        { oldItem, newItem -> oldItem == newItem },
 ) = object : ItemCallback<T>() {
 
     override fun areContentsTheSame(
         oldItem: T,
-        newItem: T
+        newItem: T,
     ) = areContentsTheSame(
         oldItem,
-        newItem
+        newItem,
     )
 
     override fun areItemsTheSame(
         oldItem: T,
-        newItem: T
+        newItem: T,
     ) = areItemsTheSame(
         oldItem,
-        newItem
+        newItem,
     )
 }

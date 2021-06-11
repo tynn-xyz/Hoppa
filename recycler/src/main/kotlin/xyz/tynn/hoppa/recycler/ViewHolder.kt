@@ -26,10 +26,10 @@ val ViewHolder.context: Context
  */
 operator fun <T> ViewHolder.set(
     key: Int,
-    value: T
+    value: T,
 ) = setTag(
     key,
-    value
+    value,
 )
 
 /**
@@ -39,10 +39,10 @@ operator fun <T> ViewHolder.set(
  */
 fun <T> ViewHolder.setTag(
     key: Int,
-    tag: T
+    tag: T,
 ) = itemView.setTag(
     key,
-    tag
+    tag,
 )
 
 /**
@@ -56,9 +56,9 @@ fun <T> ViewHolder.setTag(
  * @see ViewHolder.getTag
  */
 operator fun <T> ViewHolder.get(
-    key: Int
+    key: Int,
 ) = getTag<T>(
-    key
+    key,
 )
 
 /**
@@ -69,43 +69,25 @@ operator fun <T> ViewHolder.get(
  */
 @Suppress("UNCHECKED_CAST")
 fun <T> ViewHolder.getTag(
-    key: Int
+    key: Int,
 ) = itemView.getTag(
-    key
+    key,
 ) as? T
 
 /**
  * Sets a click [listener] on [ViewHolder.itemView].
  */
-inline fun ViewHolder.setOnClickListener(
-    crossinline listener: (View) -> Unit
-) = itemView.setOnClickListener {
-    listener(it)
-}
-
-/**
- * Sets a click [listener] on [ViewHolder.itemView].
- */
 fun ViewHolder.setOnClickListener(
-    listener: OnClickListener?
+    listener: OnClickListener?,
 ) = itemView.setOnClickListener(
-    listener
+    listener,
 )
 
 /**
  * Sets a long click [listener] on [ViewHolder.itemView].
  */
-inline fun ViewHolder.setOnLongClickListener(
-    crossinline listener: (View) -> Boolean
-) = itemView.setOnLongClickListener {
-    listener(it)
-}
-
-/**
- * Sets a long click [listener] on [ViewHolder.itemView].
- */
 fun ViewHolder.setOnLongClickListener(
-    listener: OnLongClickListener?
+    listener: OnLongClickListener?,
 ) = itemView.setOnLongClickListener(
-    listener
+    listener,
 )

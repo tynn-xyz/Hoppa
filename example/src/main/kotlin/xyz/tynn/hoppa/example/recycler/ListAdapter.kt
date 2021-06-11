@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.ListAdapter
 import kotlinx.android.synthetic.main.item_string.*
 import xyz.tynn.hoppa.example.R
 import xyz.tynn.hoppa.recycler.DiffUtilItemCallback
-import xyz.tynn.hoppa.recycler.SyntheticLayoutHolder
-import xyz.tynn.hoppa.recycler.SyntheticViewHolder
 import xyz.tynn.hoppa.recycler.setOnClickListener
+import xyz.tynn.hoppa.synthetic.SyntheticLayoutHolder
+import xyz.tynn.hoppa.synthetic.SyntheticViewHolder
 
 class ListAdapter(
     vararg initialList: String
@@ -38,7 +38,7 @@ class ListAdapter(
                     Bundle().apply {
                         putString(
                             null,
-                            getItem(adapterPosition)
+                            getItem(bindingAdapterPosition)
                         )
                     }
                 )

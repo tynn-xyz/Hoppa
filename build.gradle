@@ -2,12 +2,12 @@
 //  SPDX-License-Identifier: Apache-2.0
 
 plugins {
-    id 'com.android.library' version '4.1.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.4.30' apply false
+    id 'com.android.library' version '4.2.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.5.10' apply false
     id 'org.jetbrains.dokka' version '0.10.1'
     id 'com.vanniktech.android.junit.jacoco' version '0.16.0'
     id 'xyz.tynn.android.maven' version '0.1.0' apply false
-    id 'com.github.ben-manes.versions' version '0.36.0'
+    id 'com.github.ben-manes.versions' version '0.39.0'
     id 'xyz.tynn.idea.fix' version '0.1.2'
 }
 
@@ -15,7 +15,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
     }
 
     plugins.withType(org.jetbrains.dokka.gradle.DokkaPlugin) {
@@ -27,10 +26,6 @@ allprojects {
                 externalDocumentationLink {
                     url = new URL('https://developer.android.com/reference/kotlin/')
                     packageListUrl = new URL(url, '../androidx/package-list')
-                }
-                perPackageOption {
-                    prefix = 'xyz.tynn.hoppa.time'
-                    suppress = true
                 }
             }
         }
@@ -48,12 +43,11 @@ subprojects {
 
     plugins.withType(com.android.build.gradle.BasePlugin) {
         android {
-            buildToolsVersion '29.0.3'
-            compileSdkVersion 29
+            compileSdkVersion 30
 
             defaultConfig {
                 minSdkVersion 15
-                targetSdkVersion 29
+                targetSdkVersion 30
                 testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             }
 
@@ -64,22 +58,14 @@ subprojects {
         }
 
         dependencies {
-            testImplementation 'io.mockk:mockk:1.10.5'
+            testImplementation 'io.mockk:mockk:1.11.0'
         }
     }
 
     plugins.withId('org.jetbrains.kotlin.android') {
-        project.apply plugin: 'org.jetbrains.kotlin.android.extensions'
-
         android {
             kotlinOptions {
                 jvmTarget = '1.8'
-            }
-        }
-
-        kotlin {
-            androidExtensions {
-                experimental = true
             }
         }
 
@@ -95,7 +81,7 @@ subprojects {
 }
 
 junitJacoco {
-    jacocoVersion = '0.8.5'
+    jacocoVersion = '0.8.6'
     includeNoLocationClasses = true
 }
 

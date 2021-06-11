@@ -1,7 +1,7 @@
 //  Copyright 2020 Christian Schmitz
 //  SPDX-License-Identifier: Apache-2.0
 
-package xyz.tynn.hoppa.recycler
+package xyz.tynn.hoppa.synthetic
 
 import android.view.LayoutInflater
 import android.view.LayoutInflater.from
