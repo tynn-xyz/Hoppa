@@ -4,7 +4,8 @@
     <string name="title_message">Message</string>
 
     <string name="label_edit">Edit</string>
-    <string name="label_list">List</string>
+    <string name="label_list_binding">Binding</string>
+    <string name="label_list_synthetic">Synthetic</string>
 
     <string name="action_nothing">Do nothing</string>
 

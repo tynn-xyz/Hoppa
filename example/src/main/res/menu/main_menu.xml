@@ -1,12 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragment_list"
+        android:id="@+id/fragment_list_binding"
         android:icon="@drawable/ic_list"
-        android:title="@string/label_list" />
+        android:title="@string/label_list_binding" />
 
     <item
         android:id="@+id/fragment_edit"
         android:icon="@drawable/ic_edit"
         android:title="@string/label_edit" />
+
+    <item
+        android:id="@+id/fragment_list_synthetic"
+        android:icon="@drawable/ic_list"
+        android:title="@string/label_list_synthetic" />
 </menu>

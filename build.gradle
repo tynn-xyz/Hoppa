@@ -4,7 +4,6 @@
 plugins {
     id 'com.android.library' version '4.2.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.5.10' apply false
-    id 'org.jetbrains.dokka' version '0.10.1'
     id 'xyz.tynn.android.maven' version '0.1.0' apply false
     id 'com.github.ben-manes.versions' version '0.39.0'
     id 'xyz.tynn.idea.fix' version '0.1.2'
@@ -15,27 +14,12 @@ allprojects {
         google()
         mavenCentral()
     }
-
-    plugins.withType(org.jetbrains.dokka.gradle.DokkaPlugin) {
-        if (project != rootProject)
-            rootProject.dokka.subProjects += project.name
-
-        tasks.withType(org.jetbrains.dokka.gradle.DokkaTask) {
-            configuration {
-                externalDocumentationLink {
-                    url = new URL('https://developer.android.com/reference/kotlin/')
-                    packageListUrl = new URL(url, '../androidx/package-list')
-                }
-            }
-        }
-    }
 }
 
 subprojects {
     group = 'xyz.tynn.hoppa'
 
     plugins.withId('com.android.library') {
-        project.apply plugin: 'xyz.tynn.android.kdoc'
         project.apply plugin: 'xyz.tynn.android.sources'
         project.apply plugin: 'xyz.tynn.android.maven'
     }
@@ -89,11 +73,6 @@ dependencyUpdates {
         isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)
     }
     gradleReleaseChannel = 'current'
-}
-
-dokka {
-    outputFormat = 'html'
-    outputDirectory = "$buildDir/docs"
 }
 
 task clean(type: Delete) {

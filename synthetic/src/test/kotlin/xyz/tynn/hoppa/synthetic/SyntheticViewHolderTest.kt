@@ -3,10 +3,8 @@
 
 package xyz.tynn.hoppa.synthetic
 
-import android.view.LayoutInflater
 import android.view.View
 import io.mockk.mockk
-import io.mockk.mockkStatic
 import io.mockk.verify
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -24,7 +22,7 @@ internal class SyntheticViewHolderTest {
     }
 
     @Test
-    fun `init should be called`() = mockkStatic(LayoutInflater::class) {
+    fun `init should be called`() {
         val init = mockk<SyntheticViewHolder.() -> Unit>(relaxed = true)
 
         val holder = SyntheticViewHolder(view, init)

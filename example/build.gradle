@@ -21,6 +21,10 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     packagingOptions {
         exclude 'META-INF/LICENSE*'
     }
@@ -41,7 +45,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
 
+    implementation project(':binding')
     implementation project(':keyboard')
+    implementation project(':recycler')
     implementation project(':synthetic')
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

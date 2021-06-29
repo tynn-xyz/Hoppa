@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    api 'androidx.fragment:fragment:1.3.5'
+    api 'androidx.recyclerview:recyclerview:1.2.1'
+}

@@ -13,7 +13,10 @@ pluginManagement {
 }
 
 include ':bom'
-include ':example'
+
+include ':binding'
 include ':keyboard'
 include ':recycler'
 include ':synthetic'
+
+include ':example'

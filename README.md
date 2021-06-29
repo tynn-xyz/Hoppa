@@ -15,11 +15,65 @@ It reduces code duplication for simple use-cases around `RecyclerView` and the k
         implementation platform("xyz.tynn.hoppa:bom:$hoppaVersion")
     }
 
+
+## Binding
+
+    implementation 'xyz.tynn.hoppa:binding'
+
+### `BindingViewHolder`
+
+A simple `RecyclerView.ViewHolder` providing access to a `ViewBinding`.
+
+    holder.binding.textView.text = "value"
+
+### `Activitykt`
+
+Some simple delegates and extensions to access or use a `ViewBinding`
+with an `Activity`.
+
+    activity.contentViewBinding(ResourceBinding::inflate)
+    activity.viewBinding(ResourceBinding::inflate)
+
+    activity.setContentView(binding)
+    activity.setContentView(ResourceBinding::inflate)
+
+### `FragmentKt`
+
+Some simple delegates and extensions to access or use a `ViewBinding`
+with a `Fragment`.
+
+    fragment.viewBinding(ResourceBinding::bind)
+
+    fragment.bind(ResourceBinding::bind)
+
+### `ViewBindingKt`
+
+Some simple delegates to `ViewBinding.root` for accessing tags or setting
+(long) click listeners.
+
+    binding.context
+    binding[tagId] = tagValue
+    binding.getTag(tagId)
+    binding.setOnClickListener { doSomething() }
+    binding.setOnLongClickListener { true }
+
+### `ViewGroupKt`
+
+A simple extension to inflate a `ViewBinding` with a parent `ViewGroup`.
+
+    parent.inflate(attachToRoot = true, ResourceBinding::inflate)
+
+
 ## Keyboard
 
     implementation 'xyz.tynn.hoppa:keyboard'
 
 ### `KeyboardVisibilityKt`
+
+A small utility to react to visibility changes of on-screen keyboards.
+
+    activity.hideKeyboardOnFocusChange { it !is EditText }
+    activity.setOnKeyboardVisibilityChangeListener(::hideNavigation)
 
 
 ## Recycler
