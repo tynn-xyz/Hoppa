@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ListAdapter
 import kotlinx.android.synthetic.main.item_string.*
-import xyz.tynn.hoppa.example.R
 import xyz.tynn.hoppa.example.R.id.dialog_message
 import xyz.tynn.hoppa.example.R.layout.item_string
 import xyz.tynn.hoppa.recycler.DiffUtilItemCallback

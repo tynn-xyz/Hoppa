@@ -4,7 +4,6 @@
 package xyz.tynn.hoppa.recycler
 
 import android.content.Context
-import android.view.View
 import android.view.View.OnClickListener
 import android.view.View.OnLongClickListener
 import androidx.recyclerview.widget.RecyclerView.ViewHolder

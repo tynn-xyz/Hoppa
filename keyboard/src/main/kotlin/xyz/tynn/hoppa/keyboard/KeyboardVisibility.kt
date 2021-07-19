@@ -4,13 +4,14 @@
 package xyz.tynn.hoppa.keyboard
 
 import android.app.Activity
+import android.os.Build.VERSION_CODES.M
 import android.view.View
 import android.view.View.OnApplyWindowInsetsListener
-import android.view.ViewTreeObserver
 import android.view.ViewTreeObserver.OnGlobalFocusChangeListener
 import android.view.WindowInsets
 import android.view.inputmethod.InputMethodManager
 import android.view.inputmethod.InputMethodManager.HIDE_IMPLICIT_ONLY
+import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type.ime
@@ -25,6 +26,7 @@ import androidx.core.view.WindowInsetsCompat.toWindowInsetsCompat
  * @see WindowInsetsCompat.isVisible
  * @see WindowInsetsCompat.Type.ime
  */
+@RequiresApi(M)
 inline fun Activity.setOnKeyboardVisibilityChangeListener(
     delegate: OnApplyWindowInsetsListener,
     crossinline onKeyboardVisibilityChanged: (isVisible: Boolean) -> Unit,
@@ -43,6 +45,7 @@ inline fun Activity.setOnKeyboardVisibilityChangeListener(
  * @see WindowInsetsCompat.isVisible
  * @see WindowInsetsCompat.Type.ime
  */
+@RequiresApi(M)
 inline fun Activity.setOnKeyboardVisibilityChangeListener(
     crossinline onApplyWindowInsets: (View, WindowInsets) -> WindowInsets =
         View::onApplyWindowInsets,

@@ -31,7 +31,6 @@ inline fun <B : ViewBinding> Fragment.bind(
  * @param bind to create the [ViewBinding]
  * @see Fragment.bind
  */
-@Suppress("unused")
 inline fun <B : ViewBinding> Fragment.viewBinding(
     crossinline bind: (View) -> B,
 ): Lazy<B> = object : Lazy<B>, LifecycleEventObserver, Runnable {
@@ -57,7 +56,7 @@ inline fun <B : ViewBinding> Fragment.viewBinding(
 
     override fun onStateChanged(source: LifecycleOwner, event: Event) {
         // onStateChanged runs before onDestroyView
-        // so clear the binding after this frame completed
+        // post to clear the binding after this frame
         if (event == ON_DESTROY) handler.post(this)
     }
 
