@@ -9,6 +9,7 @@ dependencies {
         api project(":keyboard")
         api project(":recycler")
         api project(":synthetic")
+        api project(":time")
     }
 }
 

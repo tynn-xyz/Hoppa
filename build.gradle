@@ -16,46 +16,34 @@ allprojects {
 subprojects {
     group = 'xyz.tynn.hoppa'
 
+    plugins.withId('com.android.application') {
+        project.apply from: "$rootDir/android.gradle"
+    }
+
     plugins.withId('com.android.library') {
+        project.apply from: "$rootDir/android.gradle"
         project.apply plugin: 'xyz.tynn.android.sources'
         project.apply plugin: 'xyz.tynn.android.maven'
     }
 
-    plugins.withType(com.android.build.gradle.BasePlugin) {
-        android {
-            compileSdkVersion 30
-
-            defaultConfig {
-                minSdkVersion 15
-                targetSdkVersion 30
-                testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-            }
-
-            compileOptions {
-                sourceCompatibility '1.8'
-                targetCompatibility '1.8'
-            }
-        }
-
-        dependencies {
-            testImplementation 'io.mockk:mockk:1.12.0'
-        }
-    }
-
     plugins.withId('org.jetbrains.kotlin.android') {
-        android {
-            kotlinOptions {
-                jvmTarget = '1.8'
-            }
-        }
+        project.apply from: "$rootDir/kotlin.gradle"
+        android.kotlinOptions.jvmTarget = '1.8'
+    }
 
-        dependencies {
-            implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-            testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+    plugins.withId('org.jetbrains.kotlin.jvm') {
+        project.apply from: "$rootDir/kotlin.gradle"
+        project.apply plugin: 'maven-publish'
+        compileKotlin.kotlinOptions.jvmTarget = '1.8'
+        java.withSourcesJar()
+        publishing.publications {
+            kotlinJvm(MavenPublication) {
+                from components.java
+            }
         }
     }
 
-    plugins.withType(MavenPublishPlugin) {
+    plugins.withId('maven-publish') {
         project.apply from: "$rootDir/publish.gradle"
     }
 }
