@@ -12,9 +12,9 @@ import androidx.viewbinding.ViewBinding
  *
  * @see Activity.setContentView
  */
-fun <B : ViewBinding> Activity.setContentView(
+public fun <B : ViewBinding> Activity.setContentView(
     binding: B,
-) = setContentView(binding.root)
+): Unit = setContentView(binding.root)
 
 /**
  * Sets the activity content to an inflated view binding and returns it.
@@ -23,7 +23,7 @@ fun <B : ViewBinding> Activity.setContentView(
  *
  * @see Activity.setContentView
  */
-inline fun <B : ViewBinding> Activity.setContentView(
+public inline fun <B : ViewBinding> Activity.setContentView(
     crossinline inflate: (LayoutInflater) -> B,
 ): B = inflate(layoutInflater).also(::setContentView)
 
@@ -34,7 +34,7 @@ inline fun <B : ViewBinding> Activity.setContentView(
  *
  * @param inflate to create the [ViewBinding]
  */
-inline fun <B : ViewBinding> Activity.contentViewBinding(
+public inline fun <B : ViewBinding> Activity.contentViewBinding(
     crossinline inflate: (LayoutInflater) -> B,
 ): Lazy<B> = lazy { setContentView(inflate) }
 
@@ -45,6 +45,6 @@ inline fun <B : ViewBinding> Activity.contentViewBinding(
  *
  * @param inflate to create the [ViewBinding]
  */
-inline fun <B : ViewBinding> Activity.viewBinding(
+public inline fun <B : ViewBinding> Activity.viewBinding(
     crossinline inflate: (LayoutInflater) -> B,
 ): Lazy<B> = lazy { inflate(layoutInflater) }

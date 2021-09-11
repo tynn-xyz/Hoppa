@@ -11,11 +11,11 @@ import org.threeten.bp.Duration as DurationBp
 /**
  * Converts [Duration backport][DurationBp] to java time [Duration]
  */
-fun DurationBp.toJavaTime(): Duration =
+public fun DurationBp.toJavaTime(): Duration =
     Duration.ofSeconds(seconds, nano.toLong())
 
 /**
  * Converts java time [Duration] to [Duration backport][DurationBp]
  */
-fun Duration.toThreeTenBp(): DurationBp =
+public fun Duration.toThreeTenBp(): DurationBp =
     DurationBp.ofSeconds(seconds, nano.toLong())

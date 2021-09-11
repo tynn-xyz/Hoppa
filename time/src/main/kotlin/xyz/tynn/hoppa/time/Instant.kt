@@ -11,11 +11,11 @@ import org.threeten.bp.Instant as InstantBp
 /**
  * Converts [Instant backport][InstantBp] to java time [Instant]
  */
-fun InstantBp.toJavaTime(): Instant =
+public fun InstantBp.toJavaTime(): Instant =
     Instant.ofEpochSecond(epochSecond, nano.toLong())
 
 /**
  * Converts java time [Instant] to [Instant backport][InstantBp]
  */
-fun Instant.toThreeTenBp(): InstantBp =
+public fun Instant.toThreeTenBp(): InstantBp =
     InstantBp.ofEpochSecond(epochSecond, nano.toLong())

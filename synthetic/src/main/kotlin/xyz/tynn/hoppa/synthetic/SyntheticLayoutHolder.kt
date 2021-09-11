@@ -14,8 +14,8 @@ import androidx.annotation.LayoutRes
  * @param layoutRes to inflate as [itemView] and [containerView]
  * @param parent for the [itemView] to be attached to
  */
-open class SyntheticLayoutHolder(
-    @LayoutRes val layoutRes: Int,
+public open class SyntheticLayoutHolder(
+    @LayoutRes public val layoutRes: Int,
     parent: ViewGroup,
 ) : SyntheticViewHolder(
     layoutRes,
@@ -30,11 +30,11 @@ open class SyntheticLayoutHolder(
  * @param init function for the new [SyntheticLayoutHolder]
  */
 @Suppress("FunctionName")
-inline fun SyntheticLayoutHolder(
+public inline fun SyntheticLayoutHolder(
     @LayoutRes layoutRes: Int,
     parent: ViewGroup,
     crossinline init: SyntheticLayoutHolder.() -> Unit,
-) = SyntheticLayoutHolder(
+): SyntheticLayoutHolder = SyntheticLayoutHolder(
     layoutRes,
     parent,
 ).apply(init)

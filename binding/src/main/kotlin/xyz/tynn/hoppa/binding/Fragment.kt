@@ -20,7 +20,7 @@ import androidx.viewbinding.ViewBinding
  * @param bind to create the [ViewBinding]
  * @throws IllegalStateException if the view is null
  */
-inline fun <B : ViewBinding> Fragment.bind(
+public inline fun <B : ViewBinding> Fragment.bind(
     crossinline bind: (View) -> B,
 ): B = bind(requireView())
 
@@ -31,7 +31,7 @@ inline fun <B : ViewBinding> Fragment.bind(
  * @param bind to create the [ViewBinding]
  * @see Fragment.bind
  */
-inline fun <B : ViewBinding> Fragment.viewBinding(
+public inline fun <B : ViewBinding> Fragment.viewBinding(
     crossinline bind: (View) -> B,
 ): Lazy<B> = object : Lazy<B>, LifecycleEventObserver, Runnable {
 

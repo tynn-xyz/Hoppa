@@ -19,8 +19,8 @@ import androidx.viewbinding.ViewBinding
  *
  * @param binding used as [itemView]
  */
-class BindingViewHolder<B : ViewBinding>(
-    val binding: B,
+public class BindingViewHolder<B : ViewBinding>(
+    public val binding: B,
 ) : ViewHolder(
     binding.root,
 )
@@ -32,10 +32,10 @@ class BindingViewHolder<B : ViewBinding>(
  * @param init function for the new [BindingViewHolder]
  */
 @Suppress("FunctionName")
-inline fun <B : ViewBinding> BindingViewHolder(
+public inline fun <B : ViewBinding> BindingViewHolder(
     binding: B,
     crossinline init: BindingViewHolder<B>.() -> Unit,
-) = BindingViewHolder(
+): BindingViewHolder<B> = BindingViewHolder(
     binding,
 ).apply(init)
 
@@ -47,11 +47,11 @@ inline fun <B : ViewBinding> BindingViewHolder(
  * @param init function for the new [BindingViewHolder]
  */
 @Suppress("FunctionName")
-inline fun <B : ViewBinding> BindingViewHolder(
+public inline fun <B : ViewBinding> BindingViewHolder(
     itemView: View,
     crossinline bind: (View) -> B,
     crossinline init: BindingViewHolder<B>.() -> Unit = {},
-) = BindingViewHolder(
+): BindingViewHolder<B> = BindingViewHolder(
     bind(itemView),
 ).apply(init)
 
@@ -63,11 +63,11 @@ inline fun <B : ViewBinding> BindingViewHolder(
  * @param init function for the new [BindingViewHolder]
  */
 @Suppress("FunctionName")
-inline fun <B : ViewBinding> BindingViewHolder(
+public inline fun <B : ViewBinding> BindingViewHolder(
     parent: ViewGroup,
     crossinline inflate: (LayoutInflater, ViewGroup, Boolean) -> B,
     crossinline init: BindingViewHolder<B>.() -> Unit = {},
-) = BindingViewHolder(
+): BindingViewHolder<B> = BindingViewHolder(
     parent.inflate(
         attachToRoot = false,
         inflate,

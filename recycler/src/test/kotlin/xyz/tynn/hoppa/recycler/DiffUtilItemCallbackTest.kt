@@ -10,7 +10,7 @@ import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-typealias T = Pair<String, String>
+internal typealias T = Pair<String, String>
 
 internal class DiffUtilItemCallbackTest {
 

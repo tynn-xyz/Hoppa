@@ -11,11 +11,11 @@ import org.threeten.bp.LocalDate as LocalDateBp
 /**
  * Converts [LocalDate backport][LocalDateBp] to java time [LocalDate]
  */
-fun LocalDateBp.toJavaTime(): LocalDate =
+public fun LocalDateBp.toJavaTime(): LocalDate =
     LocalDate.of(year, monthValue, dayOfMonth)
 
 /**
  * Converts java time [LocalDate] to [LocalDate backport][LocalDateBp]
  */
-fun LocalDate.toThreeTenBp(): LocalDateBp =
+public fun LocalDate.toThreeTenBp(): LocalDateBp =
     LocalDateBp.of(year, monthValue, dayOfMonth)

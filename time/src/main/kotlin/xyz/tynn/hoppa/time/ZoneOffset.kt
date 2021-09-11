@@ -11,11 +11,11 @@ import org.threeten.bp.ZoneOffset as ZoneOffsetBp
 /**
  * Converts [ZoneOffset backport][ZoneOffsetBp] to java time [ZoneOffset]
  */
-fun ZoneOffsetBp.toJavaTime(): ZoneOffset =
+public fun ZoneOffsetBp.toJavaTime(): ZoneOffset =
     ZoneOffset.ofTotalSeconds(totalSeconds)
 
 /**
  * Converts java time [ZoneOffset] to [ZoneOffset backport][ZoneOffsetBp]
  */
-fun ZoneOffset.toThreeTenBp(): ZoneOffsetBp =
+public fun ZoneOffset.toThreeTenBp(): ZoneOffsetBp =
     ZoneOffsetBp.ofTotalSeconds(totalSeconds)

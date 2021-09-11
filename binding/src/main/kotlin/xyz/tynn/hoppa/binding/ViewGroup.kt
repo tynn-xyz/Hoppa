@@ -16,7 +16,7 @@ import androidx.viewbinding.ViewBinding
  *                     defaults to `false`
  * @see LayoutInflater.inflate
  */
-inline fun <B : ViewBinding> ViewGroup.inflate(
+public inline fun <B : ViewBinding> ViewGroup.inflate(
     attachToRoot: Boolean = false,
     crossinline inflate: (LayoutInflater, ViewGroup, Boolean) -> B,
 ): B = inflate(

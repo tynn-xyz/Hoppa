@@ -11,11 +11,11 @@ import org.threeten.bp.LocalTime as LocalTimeBp
 /**
  * Converts [LocalTime backport][LocalTimeBp] to java time [LocalTime]
  */
-fun LocalTimeBp.toJavaTime(): LocalTime =
+public fun LocalTimeBp.toJavaTime(): LocalTime =
     LocalTime.of(hour, minute, second, nano)
 
 /**
  * Converts java time [LocalTime] to [LocalTime backport][LocalTimeBp]
  */
-fun LocalTime.toThreeTenBp(): LocalTimeBp =
+public fun LocalTime.toThreeTenBp(): LocalTimeBp =
     LocalTimeBp.of(hour, minute, second, nano)

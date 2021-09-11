@@ -11,7 +11,7 @@ import org.threeten.bp.LocalDateTime as LocalDateTimeBp
 /**
  * Converts [LocalDateTime backport][LocalDateTimeBp] to java time [LocalDateTime]
  */
-fun LocalDateTimeBp.toJavaTime(): LocalDateTime =
+public fun LocalDateTimeBp.toJavaTime(): LocalDateTime =
     LocalDateTime.of(
         toLocalDate().toJavaTime(),
         toLocalTime().toJavaTime(),
@@ -20,7 +20,7 @@ fun LocalDateTimeBp.toJavaTime(): LocalDateTime =
 /**
  * Converts java time [LocalDateTime] to [LocalDateTime backport][LocalDateTimeBp]
  */
-fun LocalDateTime.toThreeTenBp(): LocalDateTimeBp =
+public fun LocalDateTime.toThreeTenBp(): LocalDateTimeBp =
     LocalDateTimeBp.of(
         toLocalDate().toThreeTenBp(),
         toLocalTime().toThreeTenBp(),

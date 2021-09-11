@@ -11,11 +11,11 @@ import org.threeten.bp.Month as MonthBp
 /**
  * Converts [Month backport][MonthBp] to java time [Month]
  */
-fun MonthBp.toJavaTime(): Month =
+public fun MonthBp.toJavaTime(): Month =
     Month.of(value)
 
 /**
  * Converts java time [Month] to [Month backport][MonthBp]
  */
-fun Month.toThreeTenBp(): MonthBp =
+public fun Month.toThreeTenBp(): MonthBp =
     MonthBp.of(value)

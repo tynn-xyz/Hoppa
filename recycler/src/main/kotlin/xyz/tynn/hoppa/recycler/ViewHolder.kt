@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 /**
  * Gets the [Context] from [ViewHolder.itemView].
  */
-val ViewHolder.context: Context
+public val ViewHolder.context: Context
     get() = itemView.context
 
 /**
@@ -23,10 +23,10 @@ val ViewHolder.context: Context
  *
  * @see ViewHolder.setTag
  */
-operator fun <T> ViewHolder.set(
+public operator fun <T> ViewHolder.set(
     key: Int,
     value: T,
-) = setTag(
+): Unit = setTag(
     key,
     value,
 )
@@ -36,10 +36,10 @@ operator fun <T> ViewHolder.set(
  *
  * @see ViewHolder.set
  */
-fun <T> ViewHolder.setTag(
+public fun <T> ViewHolder.setTag(
     key: Int,
     tag: T,
-) = itemView.setTag(
+): Unit = itemView.setTag(
     key,
     tag,
 )
@@ -54,9 +54,9 @@ fun <T> ViewHolder.setTag(
  * @see ViewHolder.set
  * @see ViewHolder.getTag
  */
-operator fun <T> ViewHolder.get(
+public operator fun <T> ViewHolder.get(
     key: Int,
-) = getTag<T>(
+): T? = getTag<T>(
     key,
 )
 
@@ -67,26 +67,26 @@ operator fun <T> ViewHolder.get(
  * @see ViewHolder.get
  */
 @Suppress("UNCHECKED_CAST")
-fun <T> ViewHolder.getTag(
+public fun <T> ViewHolder.getTag(
     key: Int,
-) = itemView.getTag(
+): T? = itemView.getTag(
     key,
 ) as? T
 
 /**
  * Sets a click [listener] on [ViewHolder.itemView].
  */
-fun ViewHolder.setOnClickListener(
+public fun ViewHolder.setOnClickListener(
     listener: OnClickListener?,
-) = itemView.setOnClickListener(
+): Unit = itemView.setOnClickListener(
     listener,
 )
 
 /**
  * Sets a long click [listener] on [ViewHolder.itemView].
  */
-fun ViewHolder.setOnLongClickListener(
+public fun ViewHolder.setOnLongClickListener(
     listener: OnLongClickListener?,
-) = itemView.setOnLongClickListener(
+): Unit = itemView.setOnLongClickListener(
     listener,
 )

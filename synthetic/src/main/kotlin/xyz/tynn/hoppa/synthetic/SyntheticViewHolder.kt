@@ -26,7 +26,7 @@ import kotlinx.android.extensions.LayoutContainer
  * @param containerView used as [itemView]
  */
 @ContainerOptions(SPARSE_ARRAY)
-open class SyntheticViewHolder(
+public open class SyntheticViewHolder(
     override val containerView: View,
 ) : ViewHolder(
     containerView,
@@ -38,7 +38,7 @@ open class SyntheticViewHolder(
      * @param layoutRes to inflate as [SyntheticViewHolder.itemView]
      * @param parent for the [SyntheticViewHolder.itemView] to be attached to
      */
-    constructor(
+    public constructor(
         @LayoutRes layoutRes: Int,
         parent: ViewGroup,
     ) : this(
@@ -57,10 +57,10 @@ open class SyntheticViewHolder(
  * @param init function for the new [SyntheticViewHolder]
  */
 @Suppress("FunctionName")
-inline fun SyntheticViewHolder(
+public inline fun SyntheticViewHolder(
     containerView: View,
     crossinline init: SyntheticViewHolder.() -> Unit,
-) = SyntheticViewHolder(
+): SyntheticViewHolder = SyntheticViewHolder(
     containerView,
 ).apply(init)
 
@@ -72,11 +72,11 @@ inline fun SyntheticViewHolder(
  * @param init function for the new [SyntheticViewHolder]
  */
 @Suppress("FunctionName")
-inline fun SyntheticViewHolder(
+public inline fun SyntheticViewHolder(
     @LayoutRes layoutRes: Int,
     parent: ViewGroup,
     crossinline init: SyntheticViewHolder.() -> Unit,
-) = SyntheticViewHolder(
+): SyntheticViewHolder = SyntheticViewHolder(
     layoutRes,
     parent,
 ).apply(init)

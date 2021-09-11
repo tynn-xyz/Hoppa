@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
  * @param areItemsTheSame implementation for [ItemCallback.areItemsTheSame]
  */
 @Suppress("FunctionName")
-inline fun <T> DiffUtilItemCallback(
+public inline fun <T> DiffUtilItemCallback(
     crossinline areContentsTheSame: (oldItem: T, newItem: T) -> Boolean =
         { oldItem, newItem -> oldItem == newItem },
     crossinline areItemsTheSame: (oldItem: T, newItem: T) -> Boolean =
         { oldItem, newItem -> oldItem == newItem },
-) = object : ItemCallback<T>() {
+): ItemCallback<T> = object : ItemCallback<T>() {
 
     override fun areContentsTheSame(
         oldItem: T,

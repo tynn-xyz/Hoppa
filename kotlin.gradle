@@ -1,3 +1,7 @@
+kotlin {
+    explicitApi()
+}
+
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'

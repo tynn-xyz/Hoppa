@@ -19,7 +19,4 @@ include ':recycler'
 include ':synthetic'
 
 include ':keyboard'
-
 include ':time'
-
-include ':example'

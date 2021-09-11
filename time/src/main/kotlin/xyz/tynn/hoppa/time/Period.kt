@@ -11,11 +11,11 @@ import org.threeten.bp.Period as PeriodBp
 /**
  * Converts [Period backport][PeriodBp] to java time [Period]
  */
-fun PeriodBp.toJavaTime(): Period =
+public fun PeriodBp.toJavaTime(): Period =
     Period.of(years, months, days)
 
 /**
  * Converts java time [Period] to [Period backport][PeriodBp]
  */
-fun Period.toThreeTenBp(): PeriodBp =
+public fun Period.toThreeTenBp(): PeriodBp =
     PeriodBp.of(years, months, days)

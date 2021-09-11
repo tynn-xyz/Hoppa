@@ -10,7 +10,7 @@ import androidx.viewbinding.ViewBinding
 /**
  * Gets the [Context] from [ViewBinding.getRoot].
  */
-val ViewBinding.context: Context
+public val ViewBinding.context: Context
     get() = root.context
 
 /**
@@ -22,10 +22,10 @@ val ViewBinding.context: Context
  *
  * @see ViewBinding.setTag
  */
-operator fun <T> ViewBinding.set(
+public operator fun <T> ViewBinding.set(
     key: Int,
     value: T,
-) = setTag(
+): Unit = setTag(
     key,
     value,
 )
@@ -35,10 +35,10 @@ operator fun <T> ViewBinding.set(
  *
  * @see ViewBinding.set
  */
-fun <T> ViewBinding.setTag(
+public fun <T> ViewBinding.setTag(
     key: Int,
     tag: T,
-) = root.setTag(
+): Unit = root.setTag(
     key,
     tag,
 )
@@ -53,9 +53,9 @@ fun <T> ViewBinding.setTag(
  * @see ViewBinding.set
  * @see ViewBinding.getTag
  */
-operator fun <T> ViewBinding.get(
+public operator fun <T> ViewBinding.get(
     key: Int,
-) = getTag<T>(
+): T? = getTag<T>(
     key,
 )
 
@@ -66,26 +66,26 @@ operator fun <T> ViewBinding.get(
  * @see ViewBinding.get
  */
 @Suppress("UNCHECKED_CAST")
-fun <T> ViewBinding.getTag(
+public fun <T> ViewBinding.getTag(
     key: Int,
-) = root.getTag(
+): T? = root.getTag(
     key,
 ) as? T
 
 /**
  * Sets a click [listener] on [ViewBinding.getRoot].
  */
-fun ViewBinding.setOnClickListener(
+public fun ViewBinding.setOnClickListener(
     listener: View.OnClickListener?,
-) = root.setOnClickListener(
+): Unit = root.setOnClickListener(
     listener,
 )
 
 /**
  * Sets a long click [listener] on [ViewBinding.getRoot].
  */
-fun ViewBinding.setOnLongClickListener(
+public fun ViewBinding.setOnLongClickListener(
     listener: View.OnLongClickListener?,
-) = root.setOnLongClickListener(
+): Unit = root.setOnLongClickListener(
     listener,
 )

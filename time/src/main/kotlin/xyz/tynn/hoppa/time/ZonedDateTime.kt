@@ -11,7 +11,7 @@ import org.threeten.bp.ZonedDateTime as ZonedDateTimeBp
 /**
  * Converts [ZonedDateTime backport][ZonedDateTimeBp] to java time [ZonedDateTime]
  */
-fun ZonedDateTimeBp.toJavaTime(): ZonedDateTime =
+public fun ZonedDateTimeBp.toJavaTime(): ZonedDateTime =
     ZonedDateTime.of(
         toLocalDateTime().toJavaTime(),
         zone.toJavaTime(),
@@ -20,7 +20,7 @@ fun ZonedDateTimeBp.toJavaTime(): ZonedDateTime =
 /**
  * Converts java time [ZonedDateTime] to [ZonedDateTime backport][ZonedDateTimeBp]
  */
-fun ZonedDateTime.toThreeTenBp(): ZonedDateTimeBp =
+public fun ZonedDateTime.toThreeTenBp(): ZonedDateTimeBp =
     ZonedDateTimeBp.of(
         toLocalDateTime().toThreeTenBp(),
         zone.toThreeTenBp(),

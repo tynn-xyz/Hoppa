@@ -1,9 +1,11 @@
 # Hoppa
+
 [![Build][build-shield]][build]
 [![Download][download-shield]][download]
 
-_Hoppa_ is a micro utility extension for _AndroidX_ and the _Kotlin Android Extensions_.
-It reduces code duplication for simple use-cases around `RecyclerView` and the keyboard.
+_Hoppa_ is a micro utility extension create around _AndroidX_ and
+_Kotlin Android Extensions_. It reduces code duplication for simple use-cases.
+
 
 ## Installation
 

@@ -11,11 +11,11 @@ import org.threeten.bp.ZoneId as ZoneIdBp
 /**
  * Converts [ZoneId backport][ZoneIdBp] to java time [ZoneId]
  */
-fun ZoneIdBp.toJavaTime(): ZoneId =
+public fun ZoneIdBp.toJavaTime(): ZoneId =
     ZoneId.of(id)
 
 /**
  * Converts java time [ZoneId] to [ZoneId backport][ZoneIdBp]
  */
-fun ZoneId.toThreeTenBp(): ZoneIdBp =
+public fun ZoneId.toThreeTenBp(): ZoneIdBp =
     ZoneIdBp.of(id)

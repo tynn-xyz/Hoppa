@@ -12,3 +12,11 @@ android {
         targetCompatibility '1.8'
     }
 }
+
+plugins.withId('org.jetbrains.kotlin.android') {
+    android {
+        kotlinOptions {
+            freeCompilerArgs = ["-Xexplicit-api=strict"]
+        }
+    }
+}

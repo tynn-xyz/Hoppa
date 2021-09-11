@@ -9,6 +9,7 @@ import android.view.View.OnApplyWindowInsetsListener
 import android.view.ViewTreeObserver
 import android.view.WindowInsets
 import android.view.inputmethod.InputMethodManager
+import android.view.inputmethod.InputMethodManager.HIDE_IMPLICIT_ONLY
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
 import androidx.core.view.WindowInsetsCompat
@@ -126,7 +127,7 @@ internal class KeyboardVisibilityTest {
     }
 
     @Test
-    fun `hideSoftInputOnFocusChangeWhen should throw without InputMethodManager`() {
+    fun `hideKeyboardOnFocusChange should throw without InputMethodManager`() {
         every {
             activity.getSystemService<InputMethodManager>()
         } returns null
@@ -137,7 +138,7 @@ internal class KeyboardVisibilityTest {
     }
 
     @Test
-    fun `hideSoftInputOnFocusChangeWhen should use provided InputMethodManager`() {
+    fun `hideKeyboardOnFocusChange should use provided InputMethodManager`() {
         activity.hideKeyboardOnFocusChange(imm = imm) { false }
 
         verify(inverse = true) {
@@ -146,7 +147,7 @@ internal class KeyboardVisibilityTest {
     }
 
     @Test
-    fun `hideSoftInputOnFocusChangeWhen should hide input when predicate is true`() {
+    fun `hideKeyboardOnFocusChange should hide input when predicate is true`() {
         activity.hideKeyboardOnFocusChange { true }
 
         verify {
@@ -163,7 +164,7 @@ internal class KeyboardVisibilityTest {
     }
 
     @Test
-    fun `hideSoftInputOnFocusChangeWhen should not hide input when predicate is false`() {
+    fun `hideKeyboardOnFocusChange should not hide input when predicate is false`() {
         activity.hideKeyboardOnFocusChange(true) { false }
 
         verify {
@@ -180,7 +181,7 @@ internal class KeyboardVisibilityTest {
     }
 
     @Test
-    fun `hideSoftInputOnFocusChangeWhen should implicitly hide input with isHideImplicitOnly`() {
+    fun `hideKeyboardOnFocusChange should implicitly hide input with isHideImplicitOnly`() {
         activity.hideKeyboardOnFocusChange(true) { false }
 
         verify {
@@ -192,12 +193,12 @@ internal class KeyboardVisibilityTest {
         focusListener.captured.onGlobalFocusChanged(view, null)
 
         verifyAll {
-            imm.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_IMPLICIT_ONLY)
+            imm.hideSoftInputFromWindow(view.windowToken, HIDE_IMPLICIT_ONLY)
         }
     }
 
     @Test
-    fun `hideSoftInputOnFocusChangeWhen should hide input from window when views are null`() {
+    fun `hideKeyboardOnFocusChange should hide input from window when views are null`() {
         activity.hideKeyboardOnFocusChange { false }
 
         verifyAll {

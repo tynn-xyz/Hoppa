@@ -11,7 +11,7 @@ import org.threeten.bp.OffsetTime as OffsetTimeBp
 /**
  * Converts [OffsetTime backport][OffsetTimeBp] to java time [OffsetTime]
  */
-fun OffsetTimeBp.toJavaTime(): OffsetTime =
+public fun OffsetTimeBp.toJavaTime(): OffsetTime =
     OffsetTime.of(
         toLocalTime().toJavaTime(),
         offset.toJavaTime(),
@@ -20,7 +20,7 @@ fun OffsetTimeBp.toJavaTime(): OffsetTime =
 /**
  * Converts java time [OffsetTime] to [OffsetTime backport][OffsetTimeBp]
  */
-fun OffsetTime.toThreeTenBp(): OffsetTimeBp =
+public fun OffsetTime.toThreeTenBp(): OffsetTimeBp =
     OffsetTimeBp.of(
         toLocalTime().toThreeTenBp(),
         offset.toThreeTenBp(),
