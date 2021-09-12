@@ -13,10 +13,6 @@ android {
     }
 }
 
-plugins.withId('org.jetbrains.kotlin.android') {
-    android {
-        kotlinOptions {
-            freeCompilerArgs = ["-Xexplicit-api=strict"]
-        }
-    }
+dependencies {
+    androidTestImplementation 'androidx.test:core'
 }

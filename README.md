@@ -1,5 +1,4 @@
 # Hoppa
-
 [![Build][build-shield]][build]
 [![Download][download-shield]][download]
 
@@ -16,6 +15,97 @@ _Kotlin Android Extensions_. It reduces code duplication for simple use-cases.
     dependencies {
         implementation platform("xyz.tynn.hoppa:bom:$hoppaVersion")
     }
+
+
+## Keyboard
+
+    implementation 'xyz.tynn.hoppa:keyboard'
+
+### `KeyboardVisibilityKt`
+
+A small utility to react to visibility changes of on-screen keyboards.
+
+    activity.hideKeyboardOnFocusChange { it !is EditText }
+    activity.setOnKeyboardVisibilityChangeListener(::hideNavigation)
+
+
+## Storage
+
+    implementation 'xyz.tynn.hoppa:storage'
+
+### `DatabaseUtils`
+
+An extension of `android.database.DatabaseUtils` for `SupportSQLiteStatement`,
+`SupportSQLiteDatabase` and `RoomDatabase`.
+
+    roomDb.queryNumEntries(tableName, selection, arg1, arg2)
+    db.queryNumEntries(tableName, selection, arg1, arg2)
+    db.longForQuery(query, arg1, arg2)
+    prog.longForQuery(arg1, arg2)
+    db.stringForQuery(query, arg1, arg2)
+    prog.stringForQuery(arg1, arg2)
+    prog.bindAllArgsAsStrings(arg1, arg2)
+    prog.bindObject(index, any)
+
+### `DatabaseBuilder` and `InMemoryDatabaseBuilder`
+
+An injectable `DatabaseBuilder` for `Room` to replace direct calls to
+`databaseBuilder(Context,Class,String)`.
+
+    @Inject lateinit var databaseBuilder: DatabaseBuilder
+    databaseBuilder<MyRoomDatabase>().build()
+
+The `InMemoryDatabaseBuilder` subclass replaces direct calls to
+`inMemoryDatabaseBuilder(Context,Class)`.
+
+    @Binds fun bindDatabaseBuilder(builder: InMemoryDatabaseBuilder): DatabaseBuilder
+
+### `InMemorySharedPreferences`
+
+An in memory implementation of `SharedPreferences` backed by an `ArrayMap`. The call
+to `prefs.edit().commit()` always returns false.
+
+
+## Time
+
+    implementation 'xyz.tynn.hoppa:time'
+
+### `JavaTimeThreeTenMapper`
+
+A set of `java.time` to _ThreeTenBp_ mappers.
+
+    javaTimeDate.toThreeTenBp()
+    threeTenBpDate.toJavaTime()
+
+
+## Recycler
+
+    implementation 'xyz.tynn.hoppa:recycler'
+
+### `DiffUtilItemCallback`
+
+A simple implementation of `DiffUtil.ItemCallback` defaulting to the equality
+`oldItem == newItem` for both `areItemsTheSame()` and `areContentsTheSame()`.
+
+    DiffUtilItemCallback()
+    DiffUtilItemCallback { oldItem, newItem ->
+        oldItem.id == newItem.id
+    }
+    DiffUtilItemCallback(
+        areItemsTheSame = { oldItem, newItem -> oldItem.id == newItem.id },
+        areContentsTheSame = { oldItem, newItem -> oldItem == newItem }
+    )
+
+### `ViewHolderKt`
+
+Some simple delegates to `ViewHolder.itemView` for accessing tags or setting
+(long) click listeners.
+
+    holder.context
+    holder[tagId] = tagValue
+    holder.getTag(tagId)
+    holder.setOnClickListener { doSomething() }
+    holder.setOnLongClickListener { true }
 
 
 ## Binding
@@ -66,62 +156,20 @@ A simple extension to inflate a `ViewBinding` with a parent `ViewGroup`.
     parent.inflate(attachToRoot = true, ResourceBinding::inflate)
 
 
-## Keyboard
-
-    implementation 'xyz.tynn.hoppa:keyboard'
-
-### `KeyboardVisibilityKt`
-
-A small utility to react to visibility changes of on-screen keyboards.
-
-    activity.hideKeyboardOnFocusChange { it !is EditText }
-    activity.setOnKeyboardVisibilityChangeListener(::hideNavigation)
-
-
-## Recycler
-
-    implementation 'xyz.tynn.hoppa:recycler'
-
-### `DiffUtilItemCallback`
-
-A simple implementation of `DiffUtil.ItemCallback` defaulting to the equality
-`oldItem == newItem` for both `areItemsTheSame()` and `areContentsTheSame()`.
-
-    DiffUtilItemCallback()
-    DiffUtilItemCallback { oldItem, newItem ->
-        oldItem.id == newItem.id
-    }
-    DiffUtilItemCallback(
-        areItemsTheSame = { oldItem, newItem -> oldItem.id == newItem.id },
-        areContentsTheSame = { oldItem, newItem -> oldItem == newItem }
-    )
-
-### `ViewHolderKt`
-
-Some simple delegates to `ViewHolder.itemView` for accessing tags or setting
-(long) click listeners.
-
-    holder.context
-    holder[tagId] = tagValue
-    holder.getTag(tagId)
-    holder.setOnClickListener { doSomething() }
-    holder.setOnLongClickListener { true }
-
-
 ## Synthetic
 
     implementation 'xyz.tynn.hoppa:synthetic'
 
 ### `SyntheticViewHolder` and `SyntheticLayoutHolder`
 
-A simple `RecyclerView.ViewHolder` implementing the `LayoutContainer` interface
-to support synthetic layout properties.
+A simple `RecyclerView.ViewHolder` implementing the `LayoutContainer` interface to support synthetic
+layout properties.
 
     import kotlinx.android.synthetic.main.text_layout.text_view
     holder.text_view.text = "value"
 
-`SyntheticLayoutHolder` extends `SyntheticViewHolder` by adding a reference to
-the layout resource used to inflate the layout.
+`SyntheticLayoutHolder` extends `SyntheticViewHolder` by adding a reference to the layout resource
+used to inflate the layout.
 
 
 ## License

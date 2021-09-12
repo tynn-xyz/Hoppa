@@ -19,4 +19,5 @@ include ':recycler'
 include ':synthetic'
 
 include ':keyboard'
+include ':storage'
 include ':time'

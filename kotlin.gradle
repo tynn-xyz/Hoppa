@@ -1,3 +1,12 @@
+try {
+    android {
+        kotlinOptions {
+            freeCompilerArgs = ["-Xexplicit-api=strict"]
+        }
+    }
+} catch (ignored) {
+}
+
 kotlin {
     explicitApi()
 }
@@ -5,5 +14,5 @@ kotlin {
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
-    testImplementation 'io.mockk:mockk:1.12.0'
+    testImplementation 'io.mockk:mockk'
 }

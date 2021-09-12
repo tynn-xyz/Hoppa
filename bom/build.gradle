@@ -5,11 +5,18 @@ plugins {
 
 dependencies {
     constraints {
-        api project(":binding")
-        api project(":keyboard")
-        api project(":recycler")
-        api project(":synthetic")
-        api project(":time")
+        api project(':binding')
+        api project(':keyboard')
+        api project(':recycler')
+        api project(':storage')
+        api project(':synthetic')
+        api project(':time')
+    }
+}
+
+afterEvaluate {
+    tasks.withType(GenerateModuleMetadata).configureEach {
+        enabled = true
     }
 }
 

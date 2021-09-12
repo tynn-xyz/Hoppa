@@ -1,0 +1,28 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
+}
+
+android {
+    defaultConfig {
+        minSdkVersion 21
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    compileOnly 'javax.inject:javax.inject:1'
+    compileOnly 'androidx.room:room-runtime'
+    testImplementation configurations.compileOnly
+    testImplementation 'org.robolectric:robolectric'
+    testImplementation configurations.androidTestImplementation
+    testImplementation 'androidx.core:core-ktx'
+    testImplementation 'com.google.dagger:dagger:2.38.1'
+    kaptTest 'com.google.dagger:dagger-compiler:2.38.1'
+}
