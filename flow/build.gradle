@@ -1,0 +1,10 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+dependencies {
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core'
+    testImplementation project(':storage')
+    testImplementation 'androidx.core:core-ktx'
+}

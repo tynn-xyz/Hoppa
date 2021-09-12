@@ -29,6 +29,29 @@ A small utility to react to visibility changes of on-screen keyboards.
     activity.setOnKeyboardVisibilityChangeListener(::hideNavigation)
 
 
+## Flow
+
+    implementation 'xyz.tynn.hoppa:flow'
+
+### `FlowsKt`
+
+Missing builder and extensions for `Flow`.
+
+    deferred.asFlow()
+    flow.collectIn(scope) { use(it) }
+
+### `SharedPreferencesKt`
+
+Builder for flows from `SharedPreferences`.
+
+    prefs.getBooleanFlow("key", false)
+    prefs.getFloatFlow("key", 0F)
+    prefs.getIntFlow("key", 0)
+    prefs.getLongFlow("key", 0L)
+    prefs.getStringFlow("key", null)
+    prefs.getStringSetFlow("key", null)
+
+
 ## Storage
 
     implementation 'xyz.tynn.hoppa:storage'

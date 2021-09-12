@@ -1,4 +1,6 @@
 dependencies {
+    implementation platform('org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.5.2')
+
     constraints {
         implementation 'androidx.core:core:1.6.0'
         implementation 'androidx.core:core-ktx:1.6.0'
