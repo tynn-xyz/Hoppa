@@ -14,5 +14,10 @@ android {
 }
 
 dependencies {
-    androidTestImplementation 'androidx.test:core'
+    androidTestImplementation 'androidx.test:core:1.4.0'
+
+    constraints {
+        implementation 'androidx.core:core:1.6.0'
+        implementation 'androidx.core:core-ktx:1.6.0'
+    }
 }

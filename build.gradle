@@ -18,7 +18,6 @@ subprojects {
 
     plugins.withId('com.android.library') {
         project.apply from: "$rootDir/android.gradle"
-        project.apply from: "$rootDir/bom.gradle"
         project.apply plugin: 'xyz.tynn.android.sources'
         project.apply plugin: 'xyz.tynn.android.maven'
     }
@@ -29,7 +28,6 @@ subprojects {
 
     plugins.withId('org.jetbrains.kotlin.jvm') {
         project.apply from: "$rootDir/kotlin.gradle"
-        project.apply from: "$rootDir/bom.gradle"
         project.apply plugin: 'maven-publish'
         java.withSourcesJar()
         publishing.publications {

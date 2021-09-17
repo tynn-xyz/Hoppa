@@ -3,7 +3,7 @@
 [![Download][download-shield]][download]
 
 _Hoppa_ is a micro utility extension create around _AndroidX_ and
-_Kotlin Android Extensions_. It reduces code duplication for simple use-cases.
+_Kotlin Android Extensions_ to reduce code duplication for simple use-cases.
 
 
 ## Installation
@@ -70,13 +70,33 @@ An extension of `android.database.DatabaseUtils` for `SupportSQLiteStatement`,
     prog.bindAllArgsAsStrings(arg1, arg2)
     prog.bindObject(index, any)
 
+### `DatabaseBuilderKt`
+
+Extensions to create and configure room databases directly
+or using the `DatabaseBuilder` utility.
+
+    databaseBuilder<MyRoomDatabase>("name").build {
+        allowMainThreadQueries()
+    }
+    databaseBuilder.build<MyRoomDatabase>("name") {
+        allowMainThreadQueries()
+    }
+    context.databaseBuilder("name")
+    context.buildDatabase("name") {
+        allowMainThreadQueries()
+    }
+    context.inMemoryDatabaseBuilder("name")
+    context.buildInMemoryDatabase("name") {
+        allowMainThreadQueries()
+    }
+
 ### `DatabaseBuilder` and `InMemoryDatabaseBuilder`
 
 An injectable `DatabaseBuilder` for `Room` to replace direct calls to
 `databaseBuilder(Context,Class,String)`.
 
     @Inject lateinit var databaseBuilder: DatabaseBuilder
-    databaseBuilder<MyRoomDatabase>().build()
+    databaseBuilder("name", MyRoomDatabase::class.java).build()
 
 The `InMemoryDatabaseBuilder` subclass replaces direct calls to
 `inMemoryDatabaseBuilder(Context,Class)`.

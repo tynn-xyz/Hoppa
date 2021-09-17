@@ -18,9 +18,9 @@ android {
 
 dependencies {
     compileOnly 'javax.inject:javax.inject:1'
-    compileOnly 'androidx.room:room-runtime'
+    compileOnly 'androidx.room:room-runtime:2.3.0'
     testImplementation configurations.compileOnly
-    testImplementation 'org.robolectric:robolectric'
+    testImplementation 'org.robolectric:robolectric:4.6.1'
     testImplementation configurations.androidTestImplementation
     testImplementation 'androidx.core:core-ktx'
     testImplementation 'com.google.dagger:dagger:2.38.1'

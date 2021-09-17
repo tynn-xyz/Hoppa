@@ -20,7 +20,7 @@ import kotlin.reflect.KClass
  * @see KClass.simpleName
  */
 public inline operator fun <reified T : RoomDatabase> DatabaseBuilder.invoke(
-    name: String = T::class.simpleName!!
+    name: String = T::class.simpleName!!,
 ): Builder<T> = invoke(name, T::class.java)
 
 /**
@@ -33,7 +33,7 @@ public inline operator fun <reified T : RoomDatabase> DatabaseBuilder.invoke(
  * @see KClass.simpleName
  */
 public inline fun <reified T : RoomDatabase> Context.databaseBuilder(
-    name: String = T::class.simpleName!!
+    name: String = T::class.simpleName!!,
 ): Builder<T> = databaseBuilder(this, T::class.java, name)
 
 /**
@@ -44,3 +44,40 @@ public inline fun <reified T : RoomDatabase> Context.databaseBuilder(
 public inline fun <reified T : RoomDatabase> Context.inMemoryDatabaseBuilder(
 ): Builder<T> = inMemoryDatabaseBuilder(this, T::class.java)
 
+/**
+ * Creates, initializes and configures a new room database
+ */
+public inline fun <T : RoomDatabase> Builder<T>.build(
+    builder: Builder<T>.() -> Unit,
+): T = apply(builder).build()
+
+/**
+ * Creates, initializes and configures a new room database
+ *
+ * The [name] defaults to the simple class name
+ */
+public inline fun <reified T : RoomDatabase> DatabaseBuilder.build(
+    name: String = T::class.simpleName!!,
+    builder: Builder<T>.() -> Unit,
+): T = invoke<T>(name).build(builder)
+
+/**
+ * Creates, initializes and configures a new room database
+ *
+ * The [name] defaults to the simple class name
+ *
+ * @see databaseBuilder
+ */
+public inline fun <reified T : RoomDatabase> Context.buildDatabase(
+    name: String = T::class.simpleName!!,
+    builder: Builder<T>.() -> Unit,
+): T = databaseBuilder<T>(name).build(builder)
+
+/**
+ * Creates, initializes and configures a new in-memory room database
+ *
+ * @see inMemoryDatabaseBuilder
+ */
+public inline fun <reified T : RoomDatabase> Context.buildInMemoryDatabase(
+    builder: Builder<T>.() -> Unit,
+): T = inMemoryDatabaseBuilder<T>().build(builder)
