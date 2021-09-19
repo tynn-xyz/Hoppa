@@ -35,10 +35,20 @@ A small utility to react to visibility changes of on-screen keyboards.
 
 ### `FlowsKt`
 
-Missing builder and extensions for `Flow`.
+Missing builders and operators for `Flow`.
 
     deferred.asFlow()
+    flow.asFlow()
     flow.collectIn(scope) { use(it) }
+    flow.stateIn(scope, Eagerly)
+
+#### `Result`
+
+Analogous to `runCatching { ... }`, the `flowCatching()` operator
+wraps values and error with the `Result` type. The `flowThrowing`
+unwraps the `Result` values and errors again.
+
+    flow.flowCatching().flowThrowing()
 
 ### `SharedPreferencesKt`
 

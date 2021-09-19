@@ -69,7 +69,7 @@ public inline fun <B : ViewBinding> BindingViewHolder(
     crossinline init: BindingViewHolder<B>.() -> Unit = {},
 ): BindingViewHolder<B> = BindingViewHolder(
     parent.inflate(
-        attachToRoot = false,
+        false,
         inflate,
     ),
 ).apply(init)

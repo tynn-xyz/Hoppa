@@ -3,17 +3,15 @@
 
 package xyz.tynn.hoppa.flow
 
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-internal class FlowsTest {
+internal class CollectTest {
 
     @Test
     fun `collectIn should launch a coroutine`() {
@@ -44,17 +42,5 @@ internal class FlowsTest {
                 }
             },
         )
-    }
-
-    @Test
-    fun `asFlow should emit the async value`() {
-        runBlocking {
-            assertEquals(
-                "value",
-                async {
-                    "value"
-                }.asFlow().single(),
-            )
-        }
     }
 }

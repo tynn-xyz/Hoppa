@@ -12,14 +12,15 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.distinctUntilChanged
 
 /**
- * Retrieve a boolean flow for [key] from the preferences
+ * Creates a cold flow that emits all distinct boolean values
+ * for the given [key] or [defValue] when none is set
  *
  * @see SharedPreferences.getBoolean
  */
 public fun SharedPreferences.getBooleanFlow(
     key: String,
     defValue: Boolean,
-): Flow<Boolean> = preferenceFlow(key) {
+): Flow<Boolean> = asFlow(key) {
     getBoolean(key, defValue)
 }
 
@@ -32,7 +33,7 @@ public fun SharedPreferences.getBooleanFlow(
 public fun SharedPreferences.getFloatFlow(
     key: String,
     defValue: Float,
-): Flow<Float> = preferenceFlow(key) {
+): Flow<Float> = asFlow(key) {
     getFloat(key, defValue)
 }
 
@@ -45,7 +46,7 @@ public fun SharedPreferences.getFloatFlow(
 public fun SharedPreferences.getIntFlow(
     key: String,
     defValue: Int,
-): Flow<Int> = preferenceFlow(key) {
+): Flow<Int> = asFlow(key) {
     getInt(key, defValue)
 }
 
@@ -58,7 +59,7 @@ public fun SharedPreferences.getIntFlow(
 public fun SharedPreferences.getLongFlow(
     key: String,
     defValue: Long,
-): Flow<Long> = preferenceFlow(key) {
+): Flow<Long> = asFlow(key) {
     getLong(key, defValue)
 }
 
@@ -73,7 +74,7 @@ public fun SharedPreferences.getLongFlow(
 public fun SharedPreferences.getStringFlow(
     key: String,
     defValue: String?,
-): Flow<String?> = preferenceFlow(key) {
+): Flow<String?> = asFlow(key) {
     getString(key, defValue)
 }
 
@@ -88,11 +89,11 @@ public fun SharedPreferences.getStringFlow(
 public fun SharedPreferences.getStringSetFlow(
     key: String,
     defValue: Set<String>?,
-): Flow<Set<String>?> = preferenceFlow(key) {
+): Flow<Set<String>?> = asFlow(key) {
     getStringSet(key, defValue)
 }
 
-private inline fun <T> SharedPreferences.preferenceFlow(
+private inline fun <T> SharedPreferences.asFlow(
     requestedKey: String,
     crossinline getValue: SharedPreferences.() -> T,
 ): Flow<T> = callbackFlow {
