@@ -62,6 +62,41 @@ Builder for flows from `SharedPreferences`.
     prefs.getStringSetFlow("key", null)
 
 
+## Delegate
+
+    implementation 'xyz.tynn.hoppa:delegate'
+
+### `DelegatesKt`
+
+Extensions to provide mapped data with delegates.
+
+    val foo by delegate.map { long.toString() }
+    var foo by delegate.map {
+        inverseTransform = { string.toLong() },
+        transform = { long.toString() },
+    }
+
+    val foo by delegate.nonNull()
+    var foo by delegate.nonNull()
+
+
+### `SharedPreferencesKt`
+
+Delegate extension to access data from `SharedPreferences`.
+
+    var foo by prefs.boolean("key", false)
+    var foo by prefs.enum("key", Enum.Value)
+    var foo by prefs.float("key", -1F)
+    var foo by prefs.int("key", -1)
+    var foo by prefs.long("key", -1L)
+    var foo by prefs.string("key", "")
+    var foo by prefs.stringSet("key", setOf())
+
+    var foo by prefs.nullableEnum<Enum>("key")
+    var foo by prefs.nullableString("key")
+    var foo by prefs.nullableStringSet("key")
+
+
 ## Storage
 
     implementation 'xyz.tynn.hoppa:storage'

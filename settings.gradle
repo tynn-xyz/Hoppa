@@ -18,6 +18,7 @@ include ':binding'
 include ':recycler'
 include ':synthetic'
 
+include ':delegate'
 include ':keyboard'
 include ':flow'
 include ':storage'
