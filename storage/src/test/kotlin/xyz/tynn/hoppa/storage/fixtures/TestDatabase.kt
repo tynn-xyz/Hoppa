@@ -5,4 +5,4 @@ package xyz.tynn.hoppa.storage.fixtures
 
 import androidx.room.RoomDatabase
 
-internal abstract class Database : RoomDatabase()
+internal abstract class TestDatabase : RoomDatabase()

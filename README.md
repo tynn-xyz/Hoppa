@@ -2,8 +2,8 @@
 [![Build][build-shield]][build]
 [![Download][download-shield]][download]
 
-_Hoppa_ is a micro utility extension create around _AndroidX_ and
-_Kotlin Android Extensions_ to reduce code duplication for simple use-cases.
+_Hoppa_ is a micro utility extension created around _AndroidX_ and
+_Kotlin_ to reduce code duplication for simple use-cases.
 
 
 ## Installation
@@ -66,6 +66,16 @@ Builder for flows from `SharedPreferences`.
 
     implementation 'xyz.tynn.hoppa:storage'
 
+### `DataStoreKt`
+
+An extension to create a data store from a `Context` and
+serializers for the JSON format.
+
+    context.createDataStore(fileName, serializer)
+    gson.asSerializer(defaultValue)
+    Json.asSerializer(defaultValue)
+    moshi.asSerializer(defaultValue)
+
 ### `DatabaseUtils`
 
 An extension of `android.database.DatabaseUtils` for `SupportSQLiteStatement`,
@@ -99,19 +109,6 @@ or using the `DatabaseBuilder` utility.
     context.buildInMemoryDatabase("name") {
         allowMainThreadQueries()
     }
-
-### `DatabaseBuilder` and `InMemoryDatabaseBuilder`
-
-An injectable `DatabaseBuilder` for `Room` to replace direct calls to
-`databaseBuilder(Context,Class,String)`.
-
-    @Inject lateinit var databaseBuilder: DatabaseBuilder
-    databaseBuilder("name", MyRoomDatabase::class.java).build()
-
-The `InMemoryDatabaseBuilder` subclass replaces direct calls to
-`inMemoryDatabaseBuilder(Context,Class)`.
-
-    @Binds fun bindDatabaseBuilder(builder: InMemoryDatabaseBuilder): DatabaseBuilder
 
 ### `InMemorySharedPreferences`
 

@@ -64,4 +64,3 @@ public inline fun <B : ViewBinding> Fragment.viewBinding(
         binding = null
     }
 }
-

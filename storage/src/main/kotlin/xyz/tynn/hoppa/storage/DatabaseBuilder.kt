@@ -11,17 +11,11 @@ import androidx.room.RoomDatabase.Builder
 import kotlin.reflect.KClass
 
 /**
- * Creates a room database [Builder] by generic class
- *
- * The [name] defaults to the simple class name
- *
- * @throws NullPointerException when [T] has no name
- * @see DatabaseBuilder.invoke
- * @see KClass.simpleName
+ * Creates, initializes and configures a new room database
  */
-public inline operator fun <reified T : RoomDatabase> DatabaseBuilder.invoke(
-    name: String = T::class.simpleName!!,
-): Builder<T> = invoke(name, T::class.java)
+public inline fun <T : RoomDatabase> Builder<T>.build(
+    builder: Builder<T>.() -> Unit = {},
+): T = apply(builder).build()
 
 /**
  * Creates a room database [Builder] by generic class
@@ -37,31 +31,6 @@ public inline fun <reified T : RoomDatabase> Context.databaseBuilder(
 ): Builder<T> = databaseBuilder(this, T::class.java, name)
 
 /**
- * Creates an in-memory room database [Builder] by generic class
- *
- * @see inMemoryDatabaseBuilder
- */
-public inline fun <reified T : RoomDatabase> Context.inMemoryDatabaseBuilder(
-): Builder<T> = inMemoryDatabaseBuilder(this, T::class.java)
-
-/**
- * Creates, initializes and configures a new room database
- */
-public inline fun <T : RoomDatabase> Builder<T>.build(
-    builder: Builder<T>.() -> Unit,
-): T = apply(builder).build()
-
-/**
- * Creates, initializes and configures a new room database
- *
- * The [name] defaults to the simple class name
- */
-public inline fun <reified T : RoomDatabase> DatabaseBuilder.build(
-    name: String = T::class.simpleName!!,
-    builder: Builder<T>.() -> Unit,
-): T = invoke<T>(name).build(builder)
-
-/**
  * Creates, initializes and configures a new room database
  *
  * The [name] defaults to the simple class name
@@ -70,8 +39,16 @@ public inline fun <reified T : RoomDatabase> DatabaseBuilder.build(
  */
 public inline fun <reified T : RoomDatabase> Context.buildDatabase(
     name: String = T::class.simpleName!!,
-    builder: Builder<T>.() -> Unit,
+    builder: Builder<T>.() -> Unit = {},
 ): T = databaseBuilder<T>(name).build(builder)
+
+/**
+ * Creates an in-memory room database [Builder] by generic class
+ *
+ * @see inMemoryDatabaseBuilder
+ */
+public inline fun <reified T : RoomDatabase> Context.inMemoryDatabaseBuilder(
+): Builder<T> = inMemoryDatabaseBuilder(this, T::class.java)
 
 /**
  * Creates, initializes and configures a new in-memory room database
@@ -79,5 +56,5 @@ public inline fun <reified T : RoomDatabase> Context.buildDatabase(
  * @see inMemoryDatabaseBuilder
  */
 public inline fun <reified T : RoomDatabase> Context.buildInMemoryDatabase(
-    builder: Builder<T>.() -> Unit,
+    builder: Builder<T>.() -> Unit = {},
 ): T = inMemoryDatabaseBuilder<T>().build(builder)
