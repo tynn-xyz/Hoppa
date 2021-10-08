@@ -3,11 +3,7 @@
 
 package xyz.tynn.hoppa.flow
 
-import android.content.SharedPreferences
-import androidx.core.content.edit
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.yield
+import xyz.tynn.hoppa.flow.fixtures.editAndCollect
 import xyz.tynn.hoppa.storage.InMemorySharedPreferences
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -24,7 +20,7 @@ internal class SharedPreferencesTest {
             prefs.getBooleanFlow(
                 "key",
                 true,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putBoolean("no key", false)
                 putBoolean("key", true)
                 putBoolean("key", false)
@@ -39,7 +35,7 @@ internal class SharedPreferencesTest {
             prefs.getBooleanFlow(
                 "key",
                 true,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putFloat("key", 1F)
             }
         }
@@ -52,7 +48,7 @@ internal class SharedPreferencesTest {
             prefs.getFloatFlow(
                 "key",
                 1.2F,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putFloat("no key", 0F)
                 putFloat("key", 1F)
                 putFloat("key", 1.2F)
@@ -68,7 +64,7 @@ internal class SharedPreferencesTest {
             prefs.getFloatFlow(
                 "key",
                 0F,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putInt("key", 1)
             }
         }
@@ -81,7 +77,7 @@ internal class SharedPreferencesTest {
             prefs.getIntFlow(
                 "key",
                 1,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putInt("no key", 2)
                 putInt("key", 3)
                 putInt("key", 4)
@@ -99,7 +95,7 @@ internal class SharedPreferencesTest {
             prefs.getIntFlow(
                 "key",
                 0,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putLong("key", 1)
             }
         }
@@ -112,7 +108,7 @@ internal class SharedPreferencesTest {
             prefs.getLongFlow(
                 "key",
                 1,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putLong("no key", 2)
                 putLong("key", 3)
                 putLong("key", 4)
@@ -130,7 +126,7 @@ internal class SharedPreferencesTest {
             prefs.getLongFlow(
                 "key",
                 0,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putString("key", "1")
             }
         }
@@ -143,7 +139,7 @@ internal class SharedPreferencesTest {
             prefs.getStringFlow(
                 "key",
                 null,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putString("no key", "1")
                 putString("key", "2")
                 putString("key", null)
@@ -161,7 +157,7 @@ internal class SharedPreferencesTest {
             prefs.getStringFlow(
                 "key",
                 null,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putStringSet("key", setOf("1"))
             }
         }
@@ -181,7 +177,7 @@ internal class SharedPreferencesTest {
             prefs.getStringSetFlow(
                 "key",
                 null,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putStringSet("no key", setOf("1"))
                 putStringSet("key", setOf("2"))
                 putStringSet("key", null)
@@ -199,49 +195,9 @@ internal class SharedPreferencesTest {
             prefs.getStringSetFlow(
                 "key",
                 null,
-            ).editToList {
+            ).editAndCollect(prefs) {
                 putBoolean("key", true)
             }
-        }
-    }
-
-    private fun <T> Flow<T>.editToList(
-        action: suspend Editor.() -> Unit,
-    ): List<T> = mutableListOf<T>().apply {
-        runBlocking {
-            collectIn(this, ::add).run {
-                yield()
-                Editor().action()
-                cancel()
-            }
-        }
-    }
-
-    private inner class Editor {
-        suspend fun remove(key: String) =
-            edit { remove(key) }
-
-        suspend fun putBoolean(key: String, value: Boolean) =
-            edit { putBoolean(key, value) }
-
-        suspend fun putFloat(key: String, value: Float) =
-            edit { putFloat(key, value) }
-
-        suspend fun putInt(key: String, value: Int) =
-            edit { putInt(key, value) }
-
-        suspend fun putLong(key: String, value: Long) =
-            edit { putLong(key, value) }
-
-        suspend fun putString(key: String, value: String?) =
-            edit { putString(key, value) }
-
-        suspend fun putStringSet(key: String, value: Set<String>?) =
-            edit { putStringSet(key, value) }
-
-        private suspend fun edit(block: SharedPreferences.Editor.() -> Unit) {
-            prefs.edit(true, block)
-            yield()
         }
     }
 }

@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    implementation project(':delegate')
     testImplementation project(':storage')
     testImplementation 'androidx.core:core-ktx'
 }

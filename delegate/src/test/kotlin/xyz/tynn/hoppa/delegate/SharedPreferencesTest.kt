@@ -133,7 +133,7 @@ internal class SharedPreferencesTest {
         assertEqualsValue(setOf("one", "two"), prop)
     }
 
-    fun <T> assertEqualsValue(expected: T, actual: T) {
+    private fun <T> assertEqualsValue(expected: T, actual: T) {
         assertEquals(expected, actual)
         assertEquals(expected, prefs.all[key])
     }

@@ -50,7 +50,7 @@ unwraps the `Result` values and errors again.
 
     flow.flowCatching().flowThrowing()
 
-### `SharedPreferencesKt`
+### `SharedPreferencesKt` and `SharedPreferencesFlow`
 
 Builder for flows from `SharedPreferences`.
 
@@ -61,6 +61,19 @@ Builder for flows from `SharedPreferences`.
     prefs.getStringFlow("key", null)
     prefs.getStringSetFlow("key", null)
 
+The `SharedPreferencesFlow` also provides read write access to preference.
+
+    prefs.asBooleanFlow("key", false)
+    prefs.asFloatFlow("key", 0F)
+    prefs.asIntFlow("key", 0)
+    prefs.asLongFlow("key", 0L)
+    prefs.asStringFlow("key", "")
+    prefs.asStringFlow("key")
+    prefs.asStringSetFlow("key", setOf())
+    prefs.asStringSetFlow("key")
+
+    val flow = prefs.asStringFlow("key")
+    flow.value = "value"
 
 ## Delegate
 
