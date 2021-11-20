@@ -14,7 +14,6 @@ internal typealias T = Pair<String, String>
 
 internal class DiffUtilItemCallbackTest {
 
-
     val value1 = "value" to "1"
     val value2 = "value" to "2"
     val value3 = "value" to "1"
