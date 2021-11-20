@@ -110,6 +110,15 @@ Delegate extension to access data from `SharedPreferences`.
     var foo by prefs.nullableStringSet("key")
 
 
+### `SavedStateHandleKt`
+
+Delegate extension to access data from `SavedStateHandle`.
+
+    val handle: SavedStateHandle
+
+    var foo by handle
+
+
 ## Storage
 
     implementation 'xyz.tynn.hoppa:storage'
