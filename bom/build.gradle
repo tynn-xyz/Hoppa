@@ -6,6 +6,7 @@ plugins {
 dependencies {
     constraints {
         api project(':binding')
+        api project(':delegate')
         api project(':flow')
         api project(':keyboard')
         api project(':recycler')
