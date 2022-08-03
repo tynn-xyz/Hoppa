@@ -5,21 +5,8 @@
 
 package xyz.tynn.hoppa.delegate
 
-import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
-
-/**
- * Provides a direct mapping for [ReadOnlyProperty] values
- */
-public inline fun <T, V, R> ReadOnlyProperty<T, V>.map(
-    crossinline transform: (V) -> R,
-): ReadOnlyProperty<T, R> = ReadOnlyProperty { thisRef, property ->
-    this@map.getValue(
-        thisRef,
-        property,
-    ).let(transform)
-}
 
 /**
  * Provides a direct mapping for [ReadWriteProperty] values
@@ -47,13 +34,6 @@ public inline fun <T, V, R> ReadWriteProperty<T, V>.map(
         inverseTransform(value),
     )
 }
-
-/**
- * Wraps the [ReadOnlyProperty] to return [nullValue] instead of `null`
- */
-public fun <T, V : Any> ReadOnlyProperty<T, V?>.nonNull(
-    nullValue: V,
-): ReadOnlyProperty<T, V> = map { it ?: nullValue }
 
 /**
  * Wraps the [ReadWriteProperty] to return [nullValue] instead of `null`
