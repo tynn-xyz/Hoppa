@@ -3,8 +3,6 @@
 
 package xyz.tynn.hoppa.binding
 
-import android.os.Handler
-import android.os.Looper.getMainLooper
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle.Event
@@ -35,8 +33,6 @@ public inline fun <B : ViewBinding> Fragment.viewBinding(
     crossinline bind: (View) -> B,
 ): Lazy<B> = object : Lazy<B>, LifecycleEventObserver, Runnable {
 
-    private val handler = Handler(getMainLooper())
-
     private var binding: B? = null
 
     override val value get() = binding ?: onBind()
@@ -57,7 +53,7 @@ public inline fun <B : ViewBinding> Fragment.viewBinding(
     override fun onStateChanged(source: LifecycleOwner, event: Event) {
         // onStateChanged runs before onDestroyView
         // post to clear the binding after this frame
-        if (event == ON_DESTROY) handler.post(this)
+        if (event == ON_DESTROY) binding?.root?.post(this)
     }
 
     override fun run() {

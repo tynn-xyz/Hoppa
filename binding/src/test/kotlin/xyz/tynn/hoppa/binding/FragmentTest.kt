@@ -3,9 +3,6 @@
 
 package xyz.tynn.hoppa.binding
 
-import android.os.Handler
-import android.os.Looper
-import android.os.Looper.getMainLooper
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -21,7 +18,10 @@ import kotlin.test.assertEquals
 internal class FragmentTest {
 
     val binding = mockk<ViewBinding> {
-        every { root } returns mockk()
+        every { root.post(any()) } answers {
+            firstArg<Runnable>().run()
+            true
+        }
     }
 
     val viewLifecycle = mockk<Lifecycle>(relaxed = true) {
@@ -43,14 +43,14 @@ internal class FragmentTest {
     }
 
     @Test
-    fun `viewBinding should bind the view`() = mockkHandler {
+    fun `viewBinding should bind the view`() {
         val viewBinding by fragment.viewBinding { binding }
 
         assertEquals(binding, viewBinding)
     }
 
     @Test
-    fun `viewBinding should bind the view only once in a lifecycle`() = mockkHandler {
+    fun `viewBinding should bind the view only once in a lifecycle`() {
         val bind = spyk<(View) -> ViewBinding>({ binding })
 
         val viewBinding by fragment.viewBinding(bind)
@@ -62,7 +62,7 @@ internal class FragmentTest {
     }
 
     @Test
-    fun `viewBinding should unbind the view delayed in between lifecycles`() = mockkHandler {
+    fun `viewBinding should unbind the view delayed in between lifecycles`() {
         val bind = spyk<(View) -> ViewBinding>({ binding })
 
         val viewBinding by fragment.viewBinding(bind)
@@ -80,7 +80,7 @@ internal class FragmentTest {
     }
 
     @Test
-    fun `viewBinding should not cache the view without lifecycles`() = mockkHandler {
+    fun `viewBinding should not cache the view without lifecycles`() {
         val bind = spyk<(View) -> ViewBinding>({ binding })
         every { viewLifecycle.currentState } returns DESTROYED
 
@@ -93,28 +93,11 @@ internal class FragmentTest {
     }
 
     @Test(expected = IllegalStateException::class)
-    fun `viewBinding should fail without view`() = mockkHandler {
+    fun `viewBinding should fail without view`() {
         every { fragment.requireView() } throws IllegalStateException()
 
         val viewBinding by fragment.viewBinding { binding }
 
         viewBinding.root
-    }
-
-    fun mockkHandler(
-        block: () -> Unit,
-    ) = mockkStatic(Looper::class) {
-        every {
-            getMainLooper()
-        } returns mockk()
-        mockkConstructor(Handler::class) {
-            every {
-                anyConstructed<Handler>().post(any())
-            } answers {
-                firstArg<Runnable>().run()
-                true
-            }
-            block()
-        }
     }
 }
