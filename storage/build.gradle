@@ -2,10 +2,12 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.0'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.10'
 }
 
 android {
+    namespace 'xyz.tynn.hoppa.storage'
+
     defaultConfig {
         minSdkVersion 21
     }
@@ -18,16 +20,16 @@ android {
 }
 
 dependencies {
-    compileOnly 'androidx.room:room-runtime:2.3.0'
+    compileOnly 'androidx.room:room-runtime:2.4.3'
     compileOnly 'androidx.datastore:datastore:1.0.0'
-    compileOnly 'com.google.code.gson:gson:2.8.9'
-    compileOnly 'com.squareup.moshi:moshi:1.12.0'
-    compileOnly 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1'
+    compileOnly 'com.google.code.gson:gson:2.9.1'
+    compileOnly 'com.squareup.moshi:moshi:1.13.0'
+    compileOnly 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3'
     testImplementation configurations.compileOnly
-    testImplementation 'org.robolectric:robolectric:4.7.1'
+    testImplementation 'org.robolectric:robolectric:4.8.1'
     testImplementation configurations.androidTestImplementation
     testImplementation 'androidx.core:core-ktx'
-    testImplementation 'com.squareup.moshi:moshi-kotlin:1.12.0'
+    testImplementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
     testImplementation 'org.jetbrains.kotlin:kotlin-reflect'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-serialization-protobuf:1.3.1'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-serialization-protobuf:1.3.3'
 }

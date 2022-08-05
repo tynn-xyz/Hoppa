@@ -3,9 +3,13 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+android {
+    namespace 'xyz.tynn.hoppa.delegate'
+}
+
 dependencies {
     compileOnly 'androidx.core:core-ktx'
-    compileOnly 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.0'
+    compileOnly 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
     testImplementation project(':storage')
     testImplementation configurations.compileOnly
 }

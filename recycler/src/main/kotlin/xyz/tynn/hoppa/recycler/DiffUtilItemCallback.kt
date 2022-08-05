@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
  * @param areItemsTheSame implementation for [ItemCallback.areItemsTheSame]
  */
 @Suppress("FunctionName")
-public inline fun <T> DiffUtilItemCallback(
+public inline fun <T : Any> DiffUtilItemCallback(
     crossinline areContentsTheSame: (oldItem: T, newItem: T) -> Boolean =
         { oldItem, newItem -> oldItem == newItem },
     crossinline areItemsTheSame: (oldItem: T, newItem: T) -> Boolean =
@@ -46,7 +46,7 @@ public inline fun <T> DiffUtilItemCallback(
  * @param getChangePayload implementation for [ItemCallback.getChangePayload]
  */
 @Suppress("FunctionName")
-public inline fun <T> DiffUtilItemCallback(
+public inline fun <T : Any> DiffUtilItemCallback(
     crossinline areItemsTheSame: (oldItem: T, newItem: T) -> Boolean,
     crossinline areContentsTheSame: (oldItem: T, newItem: T) -> Boolean,
     crossinline getChangePayload: (oldItem: T, newItem: T) -> Any?,

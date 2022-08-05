@@ -4,6 +4,8 @@ plugins {
 }
 
 android {
+    namespace 'xyz.tynn.hoppa.keyboard'
+
     defaultConfig {
         minSdkVersion 21
     }

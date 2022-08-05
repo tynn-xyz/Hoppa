@@ -3,8 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+android {
+    namespace 'xyz.tynn.hoppa.flow'
+}
+
 dependencies {
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation project(':delegate')
     testImplementation project(':storage')
     testImplementation 'androidx.core:core-ktx'
