@@ -9,7 +9,6 @@ include ':bom'
 
 include ':binding'
 include ':recycler'
-include ':synthetic'
 
 include ':delegate'
 include ':keyboard'

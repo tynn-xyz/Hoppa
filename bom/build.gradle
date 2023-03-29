@@ -11,7 +11,6 @@ dependencies {
         api project(':keyboard')
         api project(':recycler')
         api project(':storage')
-        api project(':synthetic')
         api project(':time')
     }
 }

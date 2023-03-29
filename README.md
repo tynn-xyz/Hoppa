@@ -263,22 +263,6 @@ A simple extension to inflate a `ViewBinding` with a parent `ViewGroup`.
     parent.inflate(attachToRoot = true, ResourceBinding::inflate)
 
 
-## Synthetic
-
-    implementation 'xyz.tynn.hoppa:synthetic'
-
-### `SyntheticViewHolder` and `SyntheticLayoutHolder`
-
-A simple `RecyclerView.ViewHolder` implementing the `LayoutContainer` interface to support synthetic
-layout properties.
-
-    import kotlinx.android.synthetic.main.text_layout.text_view
-    holder.text_view.text = "value"
-
-`SyntheticLayoutHolder` extends `SyntheticViewHolder` by adding a reference to the layout resource
-used to inflate the layout.
-
-
 ## License
 
     Copyright (C) 2020-2021 Christian Schmitz
