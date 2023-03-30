@@ -281,6 +281,6 @@ A simple extension to inflate a `ViewBinding` with a parent `ViewGroup`.
 
 
   [build]: https://github.com/tynn-xyz/Hoppa/actions
-  [build-shield]: https://img.shields.io/github/workflow/status/tynn-xyz/Hoppa/Build
+  [build-shield]: https://img.shields.io/github/actions/workflow/status/tynn-xyz/Hoppa/build.yml
   [download]: https://jitpack.io/#xyz.tynn/hoppa
   [download-shield]: https://jitpack.io/v/xyz.tynn/hoppa.svg

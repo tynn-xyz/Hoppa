@@ -7,11 +7,12 @@ android {
     namespace 'xyz.tynn.hoppa.binding'
 
     buildFeatures {
+        androidResources true
         viewBinding true
     }
 }
 
 dependencies {
-    api 'androidx.fragment:fragment:1.5.1'
+    api libs.androidx.fragment
     api project(':recycler')
 }

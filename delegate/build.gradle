@@ -8,8 +8,8 @@ android {
 }
 
 dependencies {
-    compileOnly 'androidx.core:core-ktx'
-    compileOnly 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.5.1'
+    compileOnly libs.androidx.core.ktx
+    compileOnly libs.androidx.lifecycle.savedstate
     testImplementation project(':storage')
     testImplementation configurations.compileOnly
 }

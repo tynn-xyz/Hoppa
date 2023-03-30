@@ -7,22 +7,25 @@ import android.view.LayoutInflater
 import android.view.LayoutInflater.from
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import io.mockk.*
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkStatic
+import io.mockk.verifyAll
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 internal class ViewGroupTest {
 
-    val parent = mockk<ViewGroup>(relaxed = true)
-    val binding = mockk<ViewBinding>()
+    private val parent = mockk<ViewGroup>(relaxed = true)
+    private val binding = mockk<ViewBinding>()
 
     @Test
     fun `inflate should not attach by default`() = mockkStatic(LayoutInflater::class) {
-        val inflate = spyk<(LayoutInflater, ViewGroup, Boolean) -> ViewBinding>(
-            { _, _, _ -> binding }
-        )
         val inflater = mockk<LayoutInflater>()
         every { from(parent.context) } returns inflater
+        val inflate = mockk<(LayoutInflater, ViewGroup, Boolean) -> ViewBinding> {
+            every { this@mockk(any(), any(), any()) } returns binding
+        }
 
         assertEquals(binding, parent.inflate(inflate = inflate))
         verifyAll {
@@ -36,11 +39,11 @@ internal class ViewGroupTest {
 
     @Test
     fun `inflate should attach when requested`() = mockkStatic(LayoutInflater::class) {
-        val inflate = spyk<(LayoutInflater, ViewGroup, Boolean) -> ViewBinding>(
-            { _, _, _ -> binding }
-        )
         val inflater = mockk<LayoutInflater>()
         every { from(parent.context) } returns inflater
+        val inflate = mockk<(LayoutInflater, ViewGroup, Boolean) -> ViewBinding> {
+            every { this@mockk(any(), any(), any()) } returns binding
+        }
 
         assertEquals(binding, parent.inflate(true, inflate))
         verifyAll {

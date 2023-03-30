@@ -12,7 +12,7 @@ kotlin {
 }
 
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
-    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
-    testImplementation 'io.mockk:mockk:1.12.5'
+    implementation libs.kotlin.stdlib
+    testImplementation libs.kotlin.test
+    testImplementation libs.mockk
 }

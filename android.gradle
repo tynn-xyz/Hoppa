@@ -7,10 +7,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildFeatures {
-        buildConfig false
-    }
-
     publishing {
         singleVariant('release') {
             withSourcesJar()
@@ -19,12 +15,5 @@ android {
 }
 
 dependencies {
-    androidTestImplementation 'androidx.test:core:1.4.0'
-
-    constraints {
-        api 'androidx.core:core:1.8.0'
-        compileOnly 'androidx.core:core-ktx:1.8.0'
-        implementation 'androidx.core:core:1.8.0'
-        implementation 'androidx.core:core-ktx:1.8.0'
-    }
+    androidTestImplementation libs.androidx.test.core
 }

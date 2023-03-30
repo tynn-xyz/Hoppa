@@ -13,8 +13,8 @@ import kotlin.test.Test
 
 internal class ViewBindingTest {
 
-    val view = mockk<View>(relaxed = true)
-    val binding = ViewBinding { view }
+    private val view = mockk<View>(relaxed = true)
+    private val binding = ViewBinding { view }
 
     @Test
     fun `context should delegate to root context`() {

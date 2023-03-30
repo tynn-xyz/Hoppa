@@ -9,16 +9,15 @@ import android.view.View
 import androidx.viewbinding.ViewBinding
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.spyk
 import io.mockk.verifyAll
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 internal class ActivityTest {
 
-    val activity = mockk<Activity>(relaxed = true)
-    val view = mockk<View>()
-    val binding = mockk<ViewBinding> {
+    private val activity = mockk<Activity>(relaxed = true)
+    private val view = mockk<View>()
+    private val binding = mockk<ViewBinding> {
         every { root } returns view
     }
 
@@ -31,7 +30,9 @@ internal class ActivityTest {
 
     @Test
     fun `setContentView should set inflated binding root as content view`() {
-        val inflate = spyk<(LayoutInflater) -> ViewBinding>({ binding })
+        val inflate = mockk<(LayoutInflater) -> ViewBinding> {
+            every { this@mockk(any()) } returns binding
+        }
 
         assertEquals(binding, activity.setContentView(inflate))
         verifyAll {
@@ -42,7 +43,9 @@ internal class ActivityTest {
 
     @Test
     fun `contentViewBinding should set inflated binding root as content view`() {
-        val inflate = spyk<(LayoutInflater) -> ViewBinding>({ binding })
+        val inflate = mockk<(LayoutInflater) -> ViewBinding> {
+            every { this@mockk(any()) } returns binding
+        }
 
         val viewBinding by activity.contentViewBinding(inflate)
 
@@ -55,7 +58,9 @@ internal class ActivityTest {
 
     @Test
     fun `viewBinding should not set inflated binding root as content view`() {
-        val inflate = spyk<(LayoutInflater) -> ViewBinding>({ binding })
+        val inflate = mockk<(LayoutInflater) -> ViewBinding> {
+            every { this@mockk(any()) } returns binding
+        }
 
         val viewBinding by activity.viewBinding(inflate)
 

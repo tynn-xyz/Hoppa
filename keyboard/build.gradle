@@ -12,7 +12,7 @@ android {
 }
 
 dependencies {
-    api 'androidx.core:core'
-    compileOnly 'androidx.core:core-ktx'
+    api libs.androidx.core
+    compileOnly libs.androidx.core.ktx
     testImplementation configurations.compileOnly
 }

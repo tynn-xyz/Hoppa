@@ -8,14 +8,17 @@ import android.view.LayoutInflater.from
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import io.mockk.*
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkStatic
+import io.mockk.verifyAll
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 internal class BindingViewHolderTest {
 
-    val view = mockk<View>()
-    val binding = mockk<ViewBinding> {
+    private val view = mockk<View>()
+    private val binding = mockk<ViewBinding> {
         every { root } returns view
     }
 
@@ -28,9 +31,9 @@ internal class BindingViewHolderTest {
 
     @Test
     fun `bind should provide binding`() {
-        val bind = spyk<(View) -> ViewBinding>(
-            { binding }
-        )
+        val bind = mockk<(View) -> ViewBinding> {
+            every { this@mockk(any()) } returns binding
+        }
 
         val holder = BindingViewHolder(view, bind)
 
@@ -41,9 +44,9 @@ internal class BindingViewHolderTest {
     @Test
     fun `inflate should provide binding`() = mockkStatic(LayoutInflater::class) {
         val parent = mockk<ViewGroup>(relaxed = true)
-        val inflate = spyk<(LayoutInflater, ViewGroup, Boolean) -> ViewBinding>(
-            { _, _, _ -> binding }
-        )
+        val inflate = mockk<(LayoutInflater, ViewGroup, Boolean) -> ViewBinding> {
+            every { this@mockk(any(), any(), any()) } returns binding
+        }
         val inflater = mockk<LayoutInflater>()
         every { from(parent.context) } returns inflater
 

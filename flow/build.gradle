@@ -8,8 +8,8 @@ android {
 }
 
 dependencies {
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    api libs.kotlinx.coroutines
     implementation project(':delegate')
     testImplementation project(':storage')
-    testImplementation 'androidx.core:core-ktx'
+    testImplementation libs.androidx.core.ktx
 }

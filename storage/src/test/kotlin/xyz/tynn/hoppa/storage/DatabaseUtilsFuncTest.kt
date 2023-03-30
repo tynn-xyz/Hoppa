@@ -6,7 +6,7 @@ package xyz.tynn.hoppa.storage
 import androidx.core.content.contentValuesOf
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
-import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration.builder
+import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration.Companion.builder
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import org.junit.runner.RunWith

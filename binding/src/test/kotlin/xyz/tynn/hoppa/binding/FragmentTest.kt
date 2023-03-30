@@ -17,18 +17,18 @@ import kotlin.test.assertEquals
 
 internal class FragmentTest {
 
-    val binding = mockk<ViewBinding> {
+    private val binding = mockk<ViewBinding> {
         every { root.post(any()) } answers {
             firstArg<Runnable>().run()
             true
         }
     }
 
-    val viewLifecycle = mockk<Lifecycle>(relaxed = true) {
+    private val viewLifecycle = mockk<Lifecycle>(relaxed = true) {
         every { currentState } returns INITIALIZED
     }
 
-    val fragment = mockk<Fragment>(relaxed = true) {
+    private val fragment = mockk<Fragment>(relaxed = true) {
         every {
             viewLifecycleOwner.lifecycle
         } returns viewLifecycle
@@ -36,7 +36,9 @@ internal class FragmentTest {
 
     @Test
     fun `bind should create binding from view`() {
-        val bind = spyk<(View) -> ViewBinding>({ binding })
+        val bind = mockk<(View) -> ViewBinding> {
+            every { this@mockk(any()) } returns binding
+        }
 
         assertEquals(binding, fragment.bind(bind))
         verifyAll { bind(fragment.requireView()) }
@@ -51,7 +53,9 @@ internal class FragmentTest {
 
     @Test
     fun `viewBinding should bind the view only once in a lifecycle`() {
-        val bind = spyk<(View) -> ViewBinding>({ binding })
+        val bind = mockk<(View) -> ViewBinding> {
+            every { this@mockk(any()) } returns binding
+        }
 
         val viewBinding by fragment.viewBinding(bind)
 
@@ -63,7 +67,9 @@ internal class FragmentTest {
 
     @Test
     fun `viewBinding should unbind the view delayed in between lifecycles`() {
-        val bind = spyk<(View) -> ViewBinding>({ binding })
+        val bind = mockk<(View) -> ViewBinding> {
+            every { this@mockk(any()) } returns binding
+        }
 
         val viewBinding by fragment.viewBinding(bind)
 
@@ -81,8 +87,10 @@ internal class FragmentTest {
 
     @Test
     fun `viewBinding should not cache the view without lifecycles`() {
-        val bind = spyk<(View) -> ViewBinding>({ binding })
         every { viewLifecycle.currentState } returns DESTROYED
+        val bind = mockk<(View) -> ViewBinding> {
+            every { this@mockk(any()) } returns binding
+        }
 
         val viewBinding by fragment.viewBinding(bind)
 
