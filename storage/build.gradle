@@ -1,21 +1,19 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias libs.plugins.android
+    alias libs.plugins.kotlin.serialization
     id 'org.jetbrains.kotlin.kapt'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.10'
 }
 
 android {
-    namespace 'xyz.tynn.hoppa.storage'
-
     defaultConfig {
-        minSdkVersion 21
+        minSdk 21
     }
+}
 
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
+configurations {
+    testImplementation {
+        extendsFrom compileOnly
+        extendsFrom androidTestImplementation
     }
 }
 
@@ -25,9 +23,8 @@ dependencies {
     compileOnly libs.gson
     compileOnly libs.moshi
     compileOnly libs.kotlinx.serialization.json
-    testImplementation configurations.compileOnly
     testImplementation libs.robolectric
-    testImplementation configurations.androidTestImplementation
+    testImplementation libs.androidx.test.core
     testImplementation libs.androidx.core.ktx
     testImplementation libs.moshi.kotlin
     testImplementation libs.kotlin.reflect

@@ -1,6 +1,7 @@
 plugins {
     alias libs.plugins.android apply false
     alias libs.plugins.kotlin apply false
+    alias libs.plugins.conventions
     alias libs.plugins.versions
 }
 
@@ -13,53 +14,44 @@ subprojects {
     }
 
     plugins.withId('com.android.library') {
-        project.apply from: "$rootDir/android.gradle"
+        project.apply plugin: 'org.jetbrains.kotlin.android'
         project.apply plugin: 'maven-publish'
-        publishing.publications {
-            release(MavenPublication) {
-                afterEvaluate {
-                    from components.release
+
+        java.toolchain {
+            languageVersion.set JavaLanguageVersion.of(11)
+        }
+
+        android.compileOptions {
+            sourceCompatibility 11
+            targetCompatibility 11
+        }
+    }
+
+    plugins.withId('org.jetbrains.kotlin.jvm') {
+        project.apply plugin: 'maven-publish'
+    }
+
+    plugins.withId('xyz.tynn.convention.kotlin') {
+        kotlin.explicitApi()
+        dependencies.testImplementation libs.mockk
+    }
+
+    plugins.withId('maven-publish') {
+        publishing.publications.all {
+            pom {
+                developers {
+                    developer {
+                        id = 'tynn'
+                        name = 'Christian Schmitz'
+                    }
+                }
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
                 }
             }
         }
     }
-
-    plugins.withId('org.jetbrains.kotlin.android') {
-        project.apply from: "$rootDir/kotlin.gradle"
-    }
-
-    plugins.withId('org.jetbrains.kotlin.jvm') {
-        project.apply from: "$rootDir/kotlin.gradle"
-        project.apply plugin: 'maven-publish'
-        java.withSourcesJar()
-        publishing.publications {
-            kotlinJvm(MavenPublication) {
-                from components.java
-            }
-        }
-    }
-
-    plugins.withId('maven-publish') {
-        project.apply from: "$rootDir/publish.gradle"
-    }
-
-    tasks.withType(GenerateModuleMetadata).configureEach {
-        enabled = false
-    }
-}
-
-dependencyUpdates {
-    def isNonStable = { String version ->
-        ['alpha', 'beta', 'dev', 'rc', 'cr', 'm', 'preview', 'b', 'ea', 'eap'].any {
-            version ==~ /(?i).*[.-]${it}[.\d-+]*.*/
-        }
-    }
-    rejectVersionIf {
-        isNonStable(it.candidate.version) && !isNonStable(it.currentVersion)
-    }
-    gradleReleaseChannel = 'current'
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

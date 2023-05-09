@@ -18,6 +18,7 @@ _Kotlin_ to reduce code duplication for simple use-cases.
 
 
 ## Keyboard
+[![API][api-keyboard-shield]][api-keyboard]
 
     implementation 'xyz.tynn.hoppa:keyboard'
 
@@ -30,6 +31,7 @@ A small utility to react to visibility changes of on-screen keyboards.
 
 
 ## Flow
+[![API][api-flow-shield]][api-flow]
 
     implementation 'xyz.tynn.hoppa:flow'
 
@@ -76,6 +78,7 @@ The `SharedPreferencesFlow` also provides read write access to preference.
     flow.value = "value"
 
 ## Delegate
+[![API][api-delegate-shield]][api-delegate]
 
     implementation 'xyz.tynn.hoppa:delegate'
 
@@ -120,6 +123,7 @@ Delegate extension to access data from `SavedStateHandle`.
 
 
 ## Storage
+[![API][api-storage-shield]][api-storage]
 
     implementation 'xyz.tynn.hoppa:storage'
 
@@ -186,6 +190,7 @@ A set of `java.time` to _ThreeTenBp_ mappers.
 
 
 ## Recycler
+[![API][api-recycler-shield]][api-recycler]
 
     implementation 'xyz.tynn.hoppa:recycler'
 
@@ -216,6 +221,7 @@ Some simple delegates to `ViewHolder.itemView` for accessing tags or setting
 
 
 ## Binding
+[![API][api-binding-shield]][api-binding]
 
     implementation 'xyz.tynn.hoppa:binding'
 
@@ -280,6 +286,18 @@ A simple extension to inflate a `ViewBinding` with a parent `ViewGroup`.
     limitations under the License.
 
 
+  [api-binding]: https://asapi.gigalixirapp.com/xyz.tynn.hoppa/binding
+  [api-binding-shield]: https://img.shields.io/endpoint?url=https://asapi.gigalixirapp.com/xyz.tynn.hoppa/binding@json
+  [api-delegate]: https://asapi.gigalixirapp.com/xyz.tynn.hoppa/delegate
+  [api-delegate-shield]: https://img.shields.io/endpoint?url=https://asapi.gigalixirapp.com/xyz.tynn.hoppa/delegate@json
+  [api-flow]: https://asapi.gigalixirapp.com/xyz.tynn.hoppa/flow
+  [api-flow-shield]: https://img.shields.io/endpoint?url=https://asapi.gigalixirapp.com/xyz.tynn.hoppa/flow@json
+  [api-keyboard]: https://asapi.gigalixirapp.com/xyz.tynn.hoppa/keyboard
+  [api-keyboard-shield]: https://img.shields.io/endpoint?url=https://asapi.gigalixirapp.com/xyz.tynn.hoppa/keyboard@json
+  [api-recycler]: https://asapi.gigalixirapp.com/xyz.tynn.hoppa/recycler
+  [api-recycler-shield]: https://img.shields.io/endpoint?url=https://asapi.gigalixirapp.com/xyz.tynn.hoppa/recycler@json
+  [api-storage]: https://asapi.gigalixirapp.com/xyz.tynn.hoppa/storage
+  [api-storage-shield]: https://img.shields.io/endpoint?url=https://asapi.gigalixirapp.com/xyz.tynn.hoppa/storage@json
   [build]: https://github.com/tynn-xyz/Hoppa/actions
   [build-shield]: https://img.shields.io/github/actions/workflow/status/tynn-xyz/Hoppa/build.yml
   [download]: https://jitpack.io/#xyz.tynn/hoppa

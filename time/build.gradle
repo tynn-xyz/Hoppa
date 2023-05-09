@@ -1,8 +1,8 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm'
+    alias libs.plugins.kotlin
 }
 
 dependencies {
-    api libs.threeten.threetenabp
-    testImplementation libs.threeten.threetenbp
+    api libs.threeten.abp
+    testImplementation libs.threeten.bp
 }

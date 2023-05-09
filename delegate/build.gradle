@@ -1,15 +1,13 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias libs.plugins.android
 }
 
-android {
-    namespace 'xyz.tynn.hoppa.delegate'
+configurations {
+    testImplementation.extendsFrom compileOnly
 }
 
 dependencies {
     compileOnly libs.androidx.core.ktx
     compileOnly libs.androidx.lifecycle.savedstate
     testImplementation project(':storage')
-    testImplementation configurations.compileOnly
 }

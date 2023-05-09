@@ -1,11 +1,8 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias libs.plugins.android
 }
 
 android {
-    namespace 'xyz.tynn.hoppa.binding'
-
     buildFeatures {
         androidResources true
         viewBinding true
