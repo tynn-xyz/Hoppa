@@ -27,6 +27,6 @@ kotlinx-serialization-protobuf = "org.jetbrains.kotlinx:kotlinx-serialization-pr
 mockk = 'io.mockk:mockk:1.13.5'
 moshi = "com.squareup.moshi:moshi:1.14.0"
 moshi-kotlin = "com.squareup.moshi:moshi-kotlin:1.14.0"
-robolectric = "org.robolectric:robolectric:4.9.2"
+robolectric = "org.robolectric:robolectric:4.10.3"
 threeten-abp = "com.jakewharton.threetenabp:threetenabp:1.4.6"
 threeten-bp = "org.threeten:threetenbp:1.6.8"
