@@ -5,7 +5,7 @@ kotlin = "1.9.0"
 android = "com.android.library:8.0.2"
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-conventions = "xyz.tynn.convention.project:0.0.2"
+conventions = "xyz.tynn.convention.project:0.0.3"
 versions = "com.github.ben-manes.versions:0.47.0"
 
 [libraries]
