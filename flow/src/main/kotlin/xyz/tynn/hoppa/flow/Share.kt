@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.*
 /**
  * Converts a cold Flow into a hot StateFlow without initial value
  *
- * The [StateFlow.value] will throw an [IllegalStateException] while the
+ * The [StateFlow.value] will jni_throw an [IllegalStateException] while the
  * underlying [SharedFlow.replayCache] is empty
  *
  * @see kotlinx.coroutines.flow.stateIn

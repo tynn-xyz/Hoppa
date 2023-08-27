@@ -1,0 +1,22 @@
+plugins {
+    alias libs.plugins.android
+}
+
+android {
+//    defaultConfig{
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags ""
+//            }
+//        }
+//    }
+
+    externalNativeBuild {
+        cmake.path "src/main/cpp/CMakeLists.txt"
+    }
+}
+
+dependencies {
+    implementation libs.androidx.annotation
+    androidTestImplementation libs.bundles.android.test
+}
