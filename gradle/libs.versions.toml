@@ -6,7 +6,7 @@ android = "com.android.library:8.2.0"
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-conventions = "xyz.tynn.convention.project:0.0.4"
+conventions = "xyz.tynn.convention.project:0.0.5"
 
 [libraries]
 androidx-annotation = "androidx.annotation:annotation:1.7.1"
