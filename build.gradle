@@ -1,8 +1,8 @@
 plugins {
     alias libs.plugins.android apply false
-    alias libs.plugins.kotlin apply false
+    alias libs.plugins.kotlin.android apply false
+    alias libs.plugins.kotlin.jvm apply false
     alias libs.plugins.conventions
-    alias libs.plugins.versions
 }
 
 subprojects {
@@ -14,7 +14,6 @@ subprojects {
     }
 
     plugins.withId('com.android.library') {
-        project.apply plugin: 'org.jetbrains.kotlin.android'
         project.apply plugin: 'maven-publish'
 
         java.toolchain {
