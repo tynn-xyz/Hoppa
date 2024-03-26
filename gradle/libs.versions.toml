@@ -32,7 +32,7 @@ moshi = "com.squareup.moshi:moshi:1.15.1"
 moshi-kotlin = "com.squareup.moshi:moshi-kotlin:1.15.1"
 robolectric = "org.robolectric:robolectric:4.11.1"
 threeten-abp = "com.jakewharton.threetenabp:threetenabp:1.4.6"
-threeten-bp = "org.threeten:threetenbp:1.6.8"
+threeten-bp = "org.threeten:threetenbp:1.6.9"
 
 [bundles]
 android-test = ["androidx-test-runner", "junit"]
