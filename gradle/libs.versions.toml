@@ -10,8 +10,8 @@ conventions = "xyz.tynn.convention.project:0.0.5"
 
 [libraries]
 androidx-annotation = "androidx.annotation:annotation:1.7.1"
-androidx-core = "androidx.core:core:1.13.0"
-androidx-core-ktx = "androidx.core:core-ktx:1.13.0"
+androidx-core = "androidx.core:core:1.13.1"
+androidx-core-ktx = "androidx.core:core-ktx:1.13.1"
 androidx-datastore = "androidx.datastore:datastore:1.1.1"
 androidx-fragment = "androidx.fragment:fragment:1.7.0"
 androidx-lifecycle-savedstate = "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0"
