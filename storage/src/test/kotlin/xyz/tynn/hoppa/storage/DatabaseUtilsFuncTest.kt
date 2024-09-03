@@ -5,6 +5,7 @@ package xyz.tynn.hoppa.storage
 
 import androidx.core.content.contentValuesOf
 import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.sqlite.db.SupportSQLiteOpenHelper
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration.Companion.builder
 import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
@@ -12,19 +13,31 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import org.robolectric.annotation.Config.NONE
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@Config(sdk = [21, 32])
+@Config(sdk = [21, 34], manifest = NONE)
 @RunWith(RobolectricTestRunner::class)
-internal class DatabaseUtilsFuncTest : Callback(1) {
+internal class DatabaseUtilsFuncTest {
 
-    val database: SupportSQLiteDatabase by lazy {
-        FrameworkSQLiteOpenHelperFactory().create(
+    private lateinit var openHelper: SupportSQLiteOpenHelper
+    private val database get() = openHelper.writableDatabase
+
+    @BeforeTest
+    fun setupDatabase() {
+        openHelper = FrameworkSQLiteOpenHelperFactory().create(
             builder(getApplicationContext())
-                .callback(this)
+                .callback(SetupDb)
                 .build()
-        ).writableDatabase
+        )
+    }
+
+    @AfterTest
+    fun teardownDatabase() {
+        openHelper.close()
     }
 
     @Test
@@ -134,16 +147,19 @@ internal class DatabaseUtilsFuncTest : Callback(1) {
         )
     }
 
-    override fun onCreate(db: SupportSQLiteDatabase) {
-        db.execSQL("CREATE TABLE test (col1 INTEGER, col2 INTEGER)")
-        db.insert("test", 0, contentValuesOf("col1" to 1, "col2" to 2))
-        db.insert("test", 0, contentValuesOf("col1" to 2, "col2" to 3))
-        db.insert("test", 0, contentValuesOf("col1" to 4, "col2" to 5))
-    }
+    private companion object SetupDb : Callback(1) {
 
-    override fun onUpgrade(
-        db: SupportSQLiteDatabase,
-        oldVersion: Int,
-        newVersion: Int,
-    ) = onCreate(db)
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            db.execSQL("CREATE TABLE test (col1 INTEGER, col2 INTEGER)")
+            db.insert("test", 0, contentValuesOf("col1" to 1, "col2" to 2))
+            db.insert("test", 0, contentValuesOf("col1" to 2, "col2" to 3))
+            db.insert("test", 0, contentValuesOf("col1" to 4, "col2" to 5))
+        }
+
+        override fun onUpgrade(
+            db: SupportSQLiteDatabase,
+            oldVersion: Int,
+            newVersion: Int,
+        ) = onCreate(db)
+    }
 }

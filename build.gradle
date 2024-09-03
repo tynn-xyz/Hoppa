@@ -17,12 +17,7 @@ subprojects {
         project.apply plugin: 'maven-publish'
 
         java.toolchain {
-            languageVersion.set JavaLanguageVersion.of(11)
-        }
-
-        android.compileOptions {
-            sourceCompatibility 11
-            targetCompatibility 11
+            languageVersion.set JavaLanguageVersion.of(17)
         }
     }
 

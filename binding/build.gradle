@@ -4,6 +4,10 @@ plugins {
 }
 
 android {
+    defaultConfig {
+        minSdk 21
+    }
+
     buildFeatures {
         androidResources true
         viewBinding true

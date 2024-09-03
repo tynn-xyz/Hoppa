@@ -15,7 +15,17 @@ import androidx.core.content.getSystemService
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsCompat.Type.ime
 import androidx.core.view.WindowInsetsCompat.toWindowInsetsCompat
-import io.mockk.*
+import io.mockk.clearMocks
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.mockkStatic
+import io.mockk.runs
+import io.mockk.slot
+import io.mockk.spyk
+import io.mockk.unmockkStatic
+import io.mockk.verify
+import io.mockk.verifyAll
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -23,7 +33,7 @@ import kotlin.test.assertFailsWith
 
 internal class KeyboardVisibilityTest {
 
-    val activity = mockk<Activity> {
+    private val activity = mockk<Activity> {
         every {
             window.attributes
         } returns mockk(relaxed = true)
@@ -35,16 +45,16 @@ internal class KeyboardVisibilityTest {
         } just runs
     }
 
-    val imm = mockk<InputMethodManager>(relaxed = true)
+    private val imm = mockk<InputMethodManager>(relaxed = true)
 
     val listener = mockk<(Boolean) -> Unit>(relaxed = true)
-    val focusListener = slot<ViewTreeObserver.OnGlobalFocusChangeListener>()
+    private val focusListener = slot<ViewTreeObserver.OnGlobalFocusChangeListener>()
 
-    val view = mockk<View>(relaxed = true)
-    val insets = mockk<WindowInsets>(relaxed = true)
-    val insetsCompat = mockk<WindowInsetsCompat>(relaxed = true)
+    private val view = mockk<View>(relaxed = true)
+    private val insets = mockk<WindowInsets>(relaxed = true)
+    private val insetsCompat = mockk<WindowInsetsCompat>(relaxed = true)
 
-    val insetsListener = slot<OnApplyWindowInsetsListener>()
+    private val insetsListener = slot<OnApplyWindowInsetsListener>()
 
     @BeforeTest
     fun setup() {

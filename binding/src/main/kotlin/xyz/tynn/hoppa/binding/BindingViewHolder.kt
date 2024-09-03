@@ -31,7 +31,6 @@ public class BindingViewHolder<B : ViewBinding>(
  * @param binding used as [BindingViewHolder.itemView]
  * @param init function for the new [BindingViewHolder]
  */
-@Suppress("FunctionName")
 public inline fun <B : ViewBinding> BindingViewHolder(
     binding: B,
     crossinline init: BindingViewHolder<B>.() -> Unit,
@@ -46,7 +45,6 @@ public inline fun <B : ViewBinding> BindingViewHolder(
  * @param bind to create the [ViewBinding]
  * @param init function for the new [BindingViewHolder]
  */
-@Suppress("FunctionName")
 public inline fun <B : ViewBinding> BindingViewHolder(
     itemView: View,
     crossinline bind: (View) -> B,
@@ -62,7 +60,6 @@ public inline fun <B : ViewBinding> BindingViewHolder(
  * @param inflate to create the [ViewBinding]
  * @param init function for the new [BindingViewHolder]
  */
-@Suppress("FunctionName")
 public inline fun <B : ViewBinding> BindingViewHolder(
     parent: ViewGroup,
     crossinline inflate: (LayoutInflater, ViewGroup, Boolean) -> B,

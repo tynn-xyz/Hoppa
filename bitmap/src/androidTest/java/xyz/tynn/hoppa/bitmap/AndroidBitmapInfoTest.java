@@ -6,8 +6,13 @@ package xyz.tynn.hoppa.bitmap;
 import static android.graphics.Bitmap.Config.ALPHA_8;
 import static android.graphics.Bitmap.Config.ARGB_4444;
 import static android.graphics.Bitmap.Config.ARGB_8888;
+import static android.graphics.Bitmap.Config.RGBA_1010102;
+import static android.graphics.Bitmap.Config.RGBA_F16;
 import static android.graphics.Bitmap.Config.RGB_565;
 import static android.graphics.Bitmap.createBitmap;
+import static android.os.Build.VERSION.SDK_INT;
+import static android.os.Build.VERSION_CODES.O;
+import static android.os.Build.VERSION_CODES.TIRAMISU;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
@@ -29,9 +34,9 @@ public class AndroidBitmapInfoTest {
                 new AndroidBitmapInfo(0, 0, 0, 5));
         assertThrows(IllegalArgumentException.class, () ->
                 new AndroidBitmapInfo(0, 0, 0, 6));
-        assertThrows(IllegalArgumentException.class, () ->
+        if (SDK_INT < O) assertThrows(IllegalArgumentException.class, () ->
                 new AndroidBitmapInfo(0, 0, 0, 9));
-        assertThrows(IllegalArgumentException.class, () ->
+        if (SDK_INT < TIRAMISU) assertThrows(IllegalArgumentException.class, () ->
                 new AndroidBitmapInfo(0, 0, 0, 10));
         assertThrows(IllegalArgumentException.class, () ->
                 new AndroidBitmapInfo(0, 0, 0, 11));
@@ -44,6 +49,10 @@ public class AndroidBitmapInfoTest {
         assertEquals(RGB_565, new AndroidBitmapInfo(0, 0, 0, 4).getFormat());
         assertEquals(ARGB_4444, new AndroidBitmapInfo(0, 0, 0, 7).getFormat());
         assertEquals(ALPHA_8, new AndroidBitmapInfo(0, 0, 0, 8).getFormat());
+        if (SDK_INT < O) return;
+        assertEquals(RGBA_F16, new AndroidBitmapInfo(0, 0, 0, 9).getFormat());
+        if (SDK_INT < TIRAMISU) return;
+        assertEquals(RGBA_1010102, new AndroidBitmapInfo(0, 0, 0, 10).getFormat());
     }
 
     @Test

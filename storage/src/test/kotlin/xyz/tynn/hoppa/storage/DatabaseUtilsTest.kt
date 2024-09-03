@@ -15,22 +15,22 @@ import kotlin.test.assertEquals
 
 internal class DatabaseUtilsTest {
 
-    val program = mockk<SupportSQLiteProgram>(relaxed = true)
-    val statement = mockk<SupportSQLiteStatement>(relaxed = true)
+    private val program = mockk<SupportSQLiteProgram>(relaxed = true)
+    private val statement = mockk<SupportSQLiteStatement>(relaxed = true)
 
-    val database = mockk<SupportSQLiteDatabase> {
+    private val database = mockk<SupportSQLiteDatabase> {
         every {
             compileStatement(any())
         } returns statement
     }
 
-    val roomDatabase = mockk<RoomDatabase> {
+    private val roomDatabase = mockk<RoomDatabase> {
         every {
             openHelper.readableDatabase
         } returns database
     }
 
-    val query get() = "SELECT COUNT(*) FROM "
+    private val query get() = "SELECT COUNT(*) FROM "
 
     @Test
     fun `queryNumEntries should delegate to openHelper readable database`() {

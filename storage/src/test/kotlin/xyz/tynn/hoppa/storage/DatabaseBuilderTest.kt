@@ -20,9 +20,9 @@ import kotlin.test.assertEquals
 
 internal class DatabaseBuilderTest {
 
-    val context = mockk<Context>()
-    val database = mockk<TestDatabase>()
-    val builder = mockk<Builder<TestDatabase>>(relaxed = true) {
+    private val context = mockk<Context>()
+    private val database = mockk<TestDatabase>()
+    private val builder = mockk<Builder<TestDatabase>>(relaxed = true) {
         every { build() } returns database
     }
 

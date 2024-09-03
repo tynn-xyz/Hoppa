@@ -14,9 +14,9 @@ internal typealias T = Pair<String, String>
 
 internal class DiffUtilItemCallbackTest {
 
-    val value1 = "value" to "1"
-    val value2 = "value" to "2"
-    val value3 = "value" to "1"
+    private val value1 = "value" to "1"
+    private val value2 = "value" to "2"
+    private val value3 = "value" to "1"
 
     @Test
     fun `DiffUtilItemCallback should compare items and contents with equals`() {

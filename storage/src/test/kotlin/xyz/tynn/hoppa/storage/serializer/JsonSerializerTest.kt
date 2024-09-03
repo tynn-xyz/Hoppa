@@ -19,11 +19,11 @@ import kotlin.test.assertFailsWith
 @ExperimentalSerializationApi
 internal class JsonSerializerTest {
 
-    val input = "".byteInputStream()
-    val output = mockk<OutputStream>(relaxed = true)
-    val delegate = mockk<KSerializer<String>>(relaxed = true)
+    private val input = "".byteInputStream()
+    private val output = mockk<OutputStream>(relaxed = true)
+    private val delegate = mockk<KSerializer<String>>(relaxed = true)
 
-    val serializer = JsonSerializer("value", delegate)
+    private val serializer = JsonSerializer("value", delegate)
 
     @Test
     fun `readFrom should return the result of fromJson`() {

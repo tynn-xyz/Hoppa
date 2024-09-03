@@ -19,14 +19,14 @@ import kotlin.text.Charsets.UTF_8
 @ExperimentalSerializationApi
 internal class DataStoreTest {
 
-    val json = """{"key":"key","value":"value"}"""
-    val input = json.byteInputStream()
-    val output = ByteArrayOutputStream()
+    private val json = """{"key":"key","value":"value"}"""
+    private val input = json.byteInputStream()
+    private val output = ByteArrayOutputStream()
 
-    val entity = TestEntity("key", "value")
+    private val entity = TestEntity("key", "value")
 
-    val gson = Gson()
-    val moshi = Moshi.Builder()
+    private val gson = Gson()
+    private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
 

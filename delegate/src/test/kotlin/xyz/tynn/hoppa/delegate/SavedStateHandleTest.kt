@@ -11,13 +11,13 @@ import kotlin.test.assertNull
 
 internal class SavedStateHandleTest {
 
-    val state = SavedStateHandle()
+    private val state = SavedStateHandle()
 
     @Test
     fun `getValue should delegate to state`() {
         val value: String? by state
 
-        state.set("value", "value")
+        state["value"] = "value"
 
         assertEquals("value", value)
     }
@@ -30,6 +30,6 @@ internal class SavedStateHandleTest {
         value = "value"
         assertNotNull(value)
 
-        assertEquals("value", state.get("value"))
+        assertEquals("value", state["value"])
     }
 }

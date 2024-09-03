@@ -14,7 +14,6 @@ import java.io.InputStream
 import java.io.OutputStream
 
 @PublishedApi
-@Suppress("BlockingMethodInNonBlockingContext")
 internal class MoshiSerializer<T>(
     override val defaultValue: T,
     private val adapter: JsonAdapter<T>,

@@ -13,7 +13,6 @@ import java.nio.charset.Charset
 import kotlin.text.Charsets.UTF_8
 
 @PublishedApi
-@Suppress("BlockingMethodInNonBlockingContext")
 internal class GsonSerializer<T>(
     override val defaultValue: T,
     private val adapter: TypeAdapter<T>,
@@ -26,6 +25,7 @@ internal class GsonSerializer<T>(
         throw CorruptionException(e.message ?: "Invalid JSON data", e)
     }
 
+    @Suppress("BlockingMethodInNonBlockingContext")
     override suspend fun writeTo(t: T, output: OutputStream) {
         output.writer(charset).also {
             adapter.toJson(it, t)

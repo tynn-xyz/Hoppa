@@ -11,7 +11,7 @@ import kotlin.test.assertFailsWith
 
 internal class SharedPreferencesTest {
 
-    val prefs = InMemorySharedPreferences(false)
+    private val prefs = InMemorySharedPreferences(false)
 
     @Test
     fun `getBooleanFlow should emit all changes`() {

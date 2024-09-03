@@ -13,8 +13,8 @@ import kotlin.test.Test
 
 internal class ViewHolderTest {
 
-    val view = mockk<View>(relaxed = true)
-    val viewHolder = object : ViewHolder(view) {}
+    private val view = mockk<View>(relaxed = true)
+    private val viewHolder = object : ViewHolder(view) {}
 
     @Test
     fun `context should delegate to itemView context`() {

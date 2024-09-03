@@ -14,11 +14,11 @@ import kotlin.text.Charsets.UTF_16
 
 internal class GsonSerializerTest {
 
-    val input = mockk<InputStream>(relaxed = true)
-    val output = mockk<OutputStream>(relaxed = true)
-    val adapter = mockk<TypeAdapter<String>>()
+    private val input = mockk<InputStream>(relaxed = true)
+    private val output = mockk<OutputStream>(relaxed = true)
+    private val adapter = mockk<TypeAdapter<String>>()
 
-    val serializer = GsonSerializer("value", adapter, UTF_16)
+    private val serializer = GsonSerializer("value", adapter, UTF_16)
 
     @Test
     fun `readFrom should return the result of fromJson`() {

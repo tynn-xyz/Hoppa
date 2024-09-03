@@ -8,7 +8,6 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.os.Build.VERSION.SDK_INT
-import android.os.Build.VERSION_CODES.LOLLIPOP
 import android.os.Build.VERSION_CODES.R
 import androidx.core.content.edit
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -22,7 +21,7 @@ import org.robolectric.annotation.Config.NONE
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@Config(sdk = [LOLLIPOP, R], manifest = NONE)
+@Config(sdk = [21, 34], manifest = NONE)
 @RunWith(RobolectricTestRunner::class)
 internal class InMemorySharedPreferencesFuncTest {
 

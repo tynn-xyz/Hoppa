@@ -17,11 +17,11 @@ import kotlin.test.*
 
 internal class MoshiSerializerTest {
 
-    val input = mockk<InputStream>(relaxed = true)
-    val output = mockk<OutputStream>(relaxed = true)
-    val adapter = mockk<JsonAdapter<String>>()
+    private val input = mockk<InputStream>(relaxed = true)
+    private val output = mockk<OutputStream>(relaxed = true)
+    private val adapter = mockk<JsonAdapter<String>>()
 
-    val serializer = MoshiSerializer("value", adapter)
+    private val serializer = MoshiSerializer("value", adapter)
 
     @Test
     fun `readFrom should return the result of fromJson`() {

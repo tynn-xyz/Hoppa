@@ -15,11 +15,11 @@ import kotlin.test.assertNull
 
 internal class SharedPreferencesTest {
 
-    val key = "key"
-
-    val prefs = InMemorySharedPreferences(false)
+    private val key = "key"
+    private val prefs = InMemorySharedPreferences(false)
 
     @Test
+    @Suppress("KotlinConstantConditions")
     fun `boolean should read and write boolean values`() {
         var prop by prefs.boolean(key, false)
         assertEquals(false, prop)
@@ -45,6 +45,7 @@ internal class SharedPreferencesTest {
     }
 
     @Test
+    @Suppress("KotlinConstantConditions")
     fun `nullableEnum should read and write enum values`() {
         var prop by prefs.nullableEnum<TestEnum>(key)
         assertNull(prop)
@@ -88,6 +89,7 @@ internal class SharedPreferencesTest {
     }
 
     @Test
+    @Suppress("KotlinConstantConditions")
     fun `nullableString should read and write long values`() {
         var prop by prefs.nullableString(key)
         assertNull(prop)
@@ -111,6 +113,7 @@ internal class SharedPreferencesTest {
     }
 
     @Test
+    @Suppress("KotlinConstantConditions")
     fun `nullableStringSet should read and write long values`() {
         var prop by prefs.nullableStringSet(key)
         assertNull(prop)
