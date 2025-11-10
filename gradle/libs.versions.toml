@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.0.21"
+kotlin = "2.2.21"
 
 [plugins]
 android = "com.android.library:8.7.2"
