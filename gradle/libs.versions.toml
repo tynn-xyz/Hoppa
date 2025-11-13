@@ -29,7 +29,7 @@ mockk = 'io.mockk:mockk:1.13.12'
 moshi = "com.squareup.moshi:moshi:1.15.2"
 moshi-kotlin = "com.squareup.moshi:moshi-kotlin:1.15.2"
 robolectric = "org.robolectric:robolectric:4.13"
-threeten-abp = "com.jakewharton.threetenabp:threetenabp:1.4.7"
+threeten-abp = "com.jakewharton.threetenabp:threetenabp:1.4.9"
 threeten-bp = "org.threeten:threetenbp:1.7.0"
 
 [bundles]
