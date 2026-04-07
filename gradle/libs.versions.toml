@@ -2,7 +2,7 @@
 kotlin = "2.3.10"
 
 [plugins]
-android = "com.android.library:9.0.0"
+android = "com.android.library:9.1.0"
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
