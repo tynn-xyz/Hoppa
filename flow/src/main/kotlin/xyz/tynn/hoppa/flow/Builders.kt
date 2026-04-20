@@ -6,7 +6,9 @@
 package xyz.tynn.hoppa.flow
 
 import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 
 /**
  * Creates a cold flow that emits the async value

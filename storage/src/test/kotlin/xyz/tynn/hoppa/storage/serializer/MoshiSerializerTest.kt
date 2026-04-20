@@ -6,14 +6,22 @@ package xyz.tynn.hoppa.storage.serializer
 import androidx.datastore.core.CorruptionException
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonDataException
-import io.mockk.*
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.runs
+import io.mockk.verifyAll
 import kotlinx.coroutines.runBlocking
 import okio.BufferedSink
 import okio.BufferedSource
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
-import kotlin.test.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFails
+import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
 
 internal class MoshiSerializerTest {
 

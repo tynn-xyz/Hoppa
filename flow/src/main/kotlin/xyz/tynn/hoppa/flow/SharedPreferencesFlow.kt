@@ -8,7 +8,14 @@ package xyz.tynn.hoppa.flow
 import android.content.SharedPreferences
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterNotNull
-import xyz.tynn.hoppa.delegate.*
+import xyz.tynn.hoppa.delegate.boolean
+import xyz.tynn.hoppa.delegate.float
+import xyz.tynn.hoppa.delegate.int
+import xyz.tynn.hoppa.delegate.long
+import xyz.tynn.hoppa.delegate.nullableString
+import xyz.tynn.hoppa.delegate.nullableStringSet
+import xyz.tynn.hoppa.delegate.string
+import xyz.tynn.hoppa.delegate.stringSet
 import kotlin.properties.ReadWriteProperty
 
 /**

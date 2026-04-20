@@ -3,13 +3,28 @@
 
 package xyz.tynn.hoppa.storage.serializer
 
+import android.annotation.SuppressLint
 import androidx.datastore.core.CorruptionException
 import com.google.gson.JsonSyntaxException
 import com.google.gson.TypeAdapter
-import io.mockk.*
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.runs
+import io.mockk.slot
+import io.mockk.verifyAll
 import kotlinx.coroutines.runBlocking
-import java.io.*
-import kotlin.test.*
+import java.io.IOException
+import java.io.InputStream
+import java.io.InputStreamReader
+import java.io.OutputStream
+import java.io.OutputStreamWriter
+import java.io.Reader
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFails
+import kotlin.test.assertFailsWith
+import kotlin.test.assertNull
 import kotlin.text.Charsets.UTF_16
 
 internal class GsonSerializerTest {
@@ -35,6 +50,7 @@ internal class GsonSerializerTest {
     }
 
     @Test
+    @SuppressLint("CheckResult")
     fun `readFrom should use reader with provided charset`() {
         runBlocking {
             every {

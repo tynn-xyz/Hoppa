@@ -4,13 +4,18 @@
 package xyz.tynn.hoppa.storage
 
 import android.content.Context
+import androidx.room.ExperimentalRoomApi
 import androidx.room.Room
 import androidx.room.Room.databaseBuilder
 import androidx.room.Room.inMemoryDatabaseBuilder
 import androidx.room.RoomDatabase.Builder
 import androidx.room.RoomDatabase.JournalMode.AUTOMATIC
 import androidx.room.RoomDatabase.JournalMode.TRUNCATE
-import io.mockk.*
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkStatic
+import io.mockk.unmockkAll
+import io.mockk.verifyAll
 import xyz.tynn.hoppa.storage.fixtures.TestDatabase
 import java.util.concurrent.TimeUnit.HOURS
 import kotlin.test.AfterTest
@@ -102,13 +107,13 @@ internal class DatabaseBuilderTest {
             database,
             builder.build {
                 allowMainThreadQueries()
-                fallbackToDestructiveMigration()
+                fallbackToDestructiveMigration(true)
             },
         )
 
         verifyAll {
             builder.allowMainThreadQueries()
-            builder.fallbackToDestructiveMigration()
+            builder.fallbackToDestructiveMigration(true)
             builder.build()
         }
     }
@@ -156,6 +161,7 @@ internal class DatabaseBuilderTest {
     }
 
     @Test
+    @ExperimentalRoomApi
     fun `buildInMemoryDatabase should create and configure an in-memory database`() {
         assertEquals(
             database,

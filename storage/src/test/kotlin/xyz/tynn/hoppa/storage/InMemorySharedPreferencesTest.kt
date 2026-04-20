@@ -11,8 +11,20 @@ import android.os.Looper
 import android.os.Looper.getMainLooper
 import android.os.Looper.myLooper
 import androidx.core.content.edit
-import io.mockk.*
-import kotlin.test.*
+import io.mockk.clearMocks
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkConstructor
+import io.mockk.mockkStatic
+import io.mockk.verify
+import io.mockk.verifyAll
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
+import kotlin.test.fail
 
 internal class InMemorySharedPreferencesTest {
 

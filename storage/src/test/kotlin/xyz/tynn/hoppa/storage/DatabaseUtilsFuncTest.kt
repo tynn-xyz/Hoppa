@@ -19,7 +19,7 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-@Config(sdk = [21, 34], manifest = NONE)
+@Config(sdk = [24, 36], manifest = NONE)
 @RunWith(RobolectricTestRunner::class)
 internal class DatabaseUtilsFuncTest {
 

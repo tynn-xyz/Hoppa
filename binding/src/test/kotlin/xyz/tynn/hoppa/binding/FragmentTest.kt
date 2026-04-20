@@ -11,7 +11,11 @@ import androidx.lifecycle.Lifecycle.State.DESTROYED
 import androidx.lifecycle.Lifecycle.State.INITIALIZED
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.viewbinding.ViewBinding
-import io.mockk.*
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.slot
+import io.mockk.verify
+import io.mockk.verifyAll
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

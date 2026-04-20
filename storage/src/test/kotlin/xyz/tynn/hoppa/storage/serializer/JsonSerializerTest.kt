@@ -4,7 +4,11 @@
 package xyz.tynn.hoppa.storage.serializer
 
 import androidx.datastore.core.CorruptionException
-import io.mockk.*
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.runs
+import io.mockk.verifyAll
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer

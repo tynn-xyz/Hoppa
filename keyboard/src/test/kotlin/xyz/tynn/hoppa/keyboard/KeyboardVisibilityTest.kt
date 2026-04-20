@@ -52,7 +52,7 @@ internal class KeyboardVisibilityTest {
 
     private val view = mockk<View>(relaxed = true)
     private val insets = mockk<WindowInsets>(relaxed = true)
-    private val insetsCompat = mockk<WindowInsetsCompat>(relaxed = true)
+    private val insetsCompat by lazy { mockk<WindowInsetsCompat>(relaxed = true) }
 
     private val insetsListener = slot<OnApplyWindowInsetsListener>()
 
@@ -62,6 +62,9 @@ internal class KeyboardVisibilityTest {
         every {
             activity.getSystemService<InputMethodManager>()
         } returns imm
+        every {
+            toWindowInsetsCompat(any())
+        } returns mockk(relaxed = true)
         every {
             toWindowInsetsCompat(insets, view)
         } returns insetsCompat

@@ -3,7 +3,11 @@
 
 package xyz.tynn.hoppa.storage
 
-import io.mockk.*
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.runs
+import io.mockk.verifyAll
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

@@ -1,4 +1,4 @@
 plugins {
-    id 'xyz.tynn.convention.bom'
+    alias convention.plugins.bom
     id 'maven-publish'
 }
