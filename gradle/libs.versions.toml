@@ -17,7 +17,7 @@ androidx-recyclerview = "androidx.recyclerview:recyclerview:1.4.0"
 androidx-room-runtime = "androidx.room:room-runtime:2.8.4"
 androidx-test-core = "androidx.test:core:1.7.0"
 androidx-test-runner = "androidx.test:runner:1.7.0"
-gson = "com.google.code.gson:gson:2.13.2"
+gson = "com.google.code.gson:gson:2.14.0"
 kotlin-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 kotlin-reflect.module = "org.jetbrains.kotlin:kotlin-reflect"
 kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
