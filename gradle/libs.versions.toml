@@ -20,7 +20,7 @@ androidx-test-runner = "androidx.test:runner:1.7.0"
 gson = "com.google.code.gson:gson:2.14.0"
 kotlin-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 kotlin-reflect.module = "org.jetbrains.kotlin:kotlin-reflect"
-kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2"
+kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0"
 kotlinx-serialization-json = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0"
 kotlinx-serialization-protobuf = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf:1.11.0"
 junit = 'junit:junit:4.13.2'
